@@ -11,8 +11,12 @@ namespace _Scripts.Core
     {
         [SerializeField] private CoinPusher coinPusher;
         [SerializeField] private TrapSystem trapSystem;
-        
+
+        [SerializeField] private float clickRechargingTime;
+
         private Transform _currentTrapPreview;
+
+        private float _lastClickTime;
         private Camera _mainCamera;
         private TrapType _trapType;
 
@@ -21,6 +25,8 @@ namespace _Scripts.Core
             _mainCamera = Camera.main;
 
             _trapType = TrapType.None;
+
+            _lastClickTime = float.MinValue;
         }
 
         private void Start()
@@ -32,6 +38,11 @@ namespace _Scripts.Core
         {
             if (Input.GetMouseButtonDown(0))
             {
+                if (Time.time - _lastClickTime < clickRechargingTime)
+                {
+                    return;
+                }
+                
                 var cursorPosition = (Vector2)_mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 if (_trapType != TrapType.None)
                 {
@@ -41,6 +52,8 @@ namespace _Scripts.Core
                 {
                     coinPusher.Push(cursorPosition);
                 }
+
+                _lastClickTime = Time.time;
             }
 
             if (Input.GetMouseButtonDown(1))

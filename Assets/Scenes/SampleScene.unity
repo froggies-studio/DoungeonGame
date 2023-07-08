@@ -3712,6 +3712,10 @@ PrefabInstance:
       propertyPath: trapSystem
       value: 
       objectReference: {fileID: 731139951}
+    - target: {fileID: 8177035619240589923, guid: b8647e6020f91b745903f5117d839d78, type: 3}
+      propertyPath: clickRechargingTime
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3811,6 +3815,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 594535589538020487, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672031111192235119, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672031111192235119, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672031111192235119, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672031111192235119, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4608382343731194919, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
