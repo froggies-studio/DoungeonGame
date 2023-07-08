@@ -34,7 +34,7 @@ namespace _Scripts.Core
         private void Start()
         {
             wayPointSystem.SetAgent(player);
-            wayPointSystem.OnLastPointReached += () => ChangeState(State.PlayerWin);
+            // wayPointSystem.OnLastPointReached += () => ChangeState(State.PlayerWin);
 
             ChangeState(State.Start);
         }
@@ -51,7 +51,7 @@ namespace _Scripts.Core
             switch (newState)
             {
                 case State.Start:
-                    Time.timeScale = 0;
+                    // Time.timeScale = 0;
                     break;
                 case State.PlayerWin:
                     Time.timeScale = 0;

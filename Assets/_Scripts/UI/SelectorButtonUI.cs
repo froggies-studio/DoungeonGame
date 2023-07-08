@@ -1,5 +1,4 @@
 using System;
-using _Scripts.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,17 +10,19 @@ namespace UI
         [SerializeField] private TMP_Text trapName;
         [SerializeField] private Button button;
             
-        private TrapType _trapType;
+        private int _index;
             
-        public void SetTrapIndex(TrapType trapType, Action<TrapType> onTrapSelected)
+        public void SetTrapIndex(int index, Action<int> onTrapSelected)
         {
-            _trapType = trapType;
-            button.onClick.AddListener(() => { onTrapSelected?.Invoke(_trapType); });
+            _index = index;
+            button.onClick.AddListener(() => { onTrapSelected?.Invoke(_index); });
         }
             
-        public void SetTrapName(TrapType trapType)
+        public void SetTrapName(string name)
         {
-            trapName.text = trapType.ToString();
+            trapName.text = name;
         }
+            
+            
     }
 }
