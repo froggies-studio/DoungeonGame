@@ -62,6 +62,10 @@ namespace _Scripts.Core
                     Debug.LogError($"Can't use {TrapType.None}");
                     break;
                 case TrapType.Chest:
+                    if (Helpers.Helpers.IsOverUI())
+                    {
+                        break;
+                    }
                     var trap = _trapDictionary[trapType];
                     SpawnTrap(position, trap);
                     trapUsed = true;

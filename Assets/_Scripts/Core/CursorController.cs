@@ -50,7 +50,7 @@ namespace _Scripts.Core
                 var cursorPosition = (Vector2)_mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 if (ActiveTrapType != TrapType.None)
                 {
-                    SpawnTrap(cursorPosition);
+                    UseTrap(cursorPosition);
                 }
                 else
                 {
@@ -88,11 +88,11 @@ namespace _Scripts.Core
             }
         }
 
-        private void SpawnTrap(Vector2 cursorPosition)
+        private void UseTrap(Vector2 cursorPosition)
         {
             if (!trapSystem.TryUseTrapAt(ActiveTrapType, cursorPosition))
             {
-                ResetTrap();
+                // ResetTrap();
             }
 
             if (trapSystem.GetTrapCount(ActiveTrapType) <= 0)
