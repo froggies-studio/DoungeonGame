@@ -96,22 +96,6 @@ namespace _Scripts.Core
             return trapUsed;
         }
 
-        void A()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit))
-                {Debug.Log("HitSomething");
-                    if (hit.transform.name == "MyObjectName")
-                    {
-                        print("My object is clicked by mouse");
-                    }
-                }
-            }
-        }
-
         public event Action<TrapType, int> OnTrapCountChanged;
 
         public void SpawnTrap(Vector2 position, TrapInfoSO trap)
