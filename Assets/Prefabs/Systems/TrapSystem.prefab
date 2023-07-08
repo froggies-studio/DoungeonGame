@@ -46,3 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapInfo:
   - {fileID: 11400000, guid: e81e27e066442284abe77e56dde73d35, type: 2}
+  - {fileID: 11400000, guid: 331b1159a8c357a46aceee8b560e2e52, type: 2}
+  trapCounts:
+  - trapType: 1
+    baseCount: 5
+  - trapType: 2
+    baseCount: 5
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 256

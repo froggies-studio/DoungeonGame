@@ -2791,7 +2791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696663204683510558, guid: e221ef31b508cbc45b0740027bf1053b, type: 3}
       propertyPath: rotationEase
-      value: 16
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6508384663050317201, guid: e221ef31b508cbc45b0740027bf1053b, type: 3}
       propertyPath: m_Name

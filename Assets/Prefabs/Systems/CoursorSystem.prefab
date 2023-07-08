@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a04183a3ee462393d154433334d04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
   coinPusher: {fileID: 5172774409836672019}
   trapSystem: {fileID: 0}
+  clickRechargingTime: 0.01
 --- !u!114 &5172774409836672019
 MonoBehaviour:
   m_ObjectHideFlags: 0
