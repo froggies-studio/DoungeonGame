@@ -1,7 +1,8 @@
 using System;
+using Core;
 using UnityEngine;
 
-namespace Core
+namespace _Scripts.Core
 {
     public class CoinReceiver : MonoBehaviour
     {
@@ -29,11 +30,11 @@ namespace Core
             
             if (other.gameObject.TryGetComponent<CoinDamager>(out var damager))
             {
-                ReciveDamage(damager);
+                ReceiveDamage(damager);
             }
         }
 
-        private void ReciveDamage(CoinDamager damager)
+        private void ReceiveDamage(CoinDamager damager)
         {
             _currentHealth -= damager.Damage;
 
