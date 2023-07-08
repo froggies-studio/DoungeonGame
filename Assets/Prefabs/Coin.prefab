@@ -119,7 +119,7 @@ Transform:
   m_Children:
   - {fileID: 2471420452160881136}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &679478367228711837
 MonoBehaviour:
@@ -210,9 +210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  maxSpeed: 7
+  maxSpeed: 2
   acceleration: 900
-  nextWaypointDistance: 0.4
+  nextWaypointDistance: 1
 --- !u!50 &3756199312753686338
 Rigidbody2D:
   serializedVersion: 4

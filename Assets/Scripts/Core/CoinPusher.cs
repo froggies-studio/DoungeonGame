@@ -24,7 +24,6 @@ public class CoinPusher : MonoBehaviour
             if(!coinObject.CompareTag("Coin"))
                 continue;
             
-            Debug.Log("Push: " + coinObject);
             var direction = (coinObject.transform.position - target.position).normalized;
             coinObject.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
         }

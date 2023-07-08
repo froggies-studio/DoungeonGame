@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,7 +8,7 @@ namespace Movement
 {
     public class AStartRigidBody : MonoBehaviour
     {
-        [SerializeField] private Transform target;
+        [SerializeField] [CanBeNull] private Transform target;
         [SerializeField] private float maxSpeed;
         [SerializeField] private float acceleration;
         [SerializeField] private float nextWaypointDistance = 3f;
@@ -27,19 +28,24 @@ namespace Movement
             _seeker = GetComponent<Seeker>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
             
-            _seeker.StartPath(transform.position, target.position, OnPathComplete);
+            if(target != null)
+                _seeker.StartPath(transform.position, target.position, OnPathComplete);
             
             InvokeRepeating(nameof(UpdatePath), 0f, .5f);
         }
 
+        public void SetTarget(Transform point)
+        {
+            target = point;
+        }
+        
         private void UpdatePath()
         {
-            if (_seeker.IsDone())
+            if (_seeker.IsDone() && target != null)
             {
                 _seeker.StartPath(transform.position, target.position, OnPathComplete);
             }
         }
-        
         
         private void OnPathComplete(Path p)
         {
