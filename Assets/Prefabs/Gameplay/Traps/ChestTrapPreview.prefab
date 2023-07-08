@@ -218,6 +218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPlaceVisuals: {fileID: 2907136909746033527}
   canNotPlaceVisuals: {fileID: 6613370854380825371}
+  excludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!50 &200368535330384201
 Rigidbody2D:
   serializedVersion: 4
@@ -260,7 +263,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
