@@ -7,8 +7,6 @@ namespace _Scripts.UI
     public class TrapSelectorUIComponent : MonoBehaviour
     {
         [SerializeField] private TrapSystem trapSystem;
-        [SerializeField] private CursorController cursorController;
-        [SerializeField] private SelectorButtonUI trapSelectorUI;
         [SerializeField] private TrapSingleUI trapUITemplate;
         
         private void Start()

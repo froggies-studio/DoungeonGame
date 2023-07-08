@@ -12,6 +12,7 @@ namespace _Scripts.UI
     {
         [SerializeField] private Button restartButton;
         [SerializeField] private Button mainMenuButton;
+        [SerializeField] private GameObject handle;
 
         private void Start()
         {
@@ -37,12 +38,12 @@ namespace _Scripts.UI
 
         private void Hide()
         {
-            gameObject.SetActive(false);
+            handle.SetActive(false);
         }
 
         private void Show()
         {
-            gameObject.SetActive(true);
+            handle.SetActive(true);
         }
     }
 }
