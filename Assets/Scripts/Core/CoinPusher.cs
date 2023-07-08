@@ -14,7 +14,7 @@ public class CoinPusher : MonoBehaviour
     
     private Collider2D[] _colliders = new Collider2D[MAX_COLLIDER_COUNT];
     
-    public void Push(Vector3 position)
+    public void Push(Vector2 position)
     {
         int count = Physics2D.OverlapCircleNonAlloc(position, effectRadius, _colliders);
         for (int i = 0; i < count; i++)
