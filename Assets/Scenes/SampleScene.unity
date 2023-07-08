@@ -1059,6 +1059,7 @@ Transform:
   - {fileID: 328903976}
   - {fileID: 1943982974}
   - {fileID: 504714020}
+  - {fileID: 1673907117}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1142,6 +1143,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5538004050537272516, guid: 4481fe0a2d9e8e543adbd529ef38ccc4, type: 3}
   m_PrefabInstance: {fileID: 3766203279850759570}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1673907116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1673907117}
+  - component: {fileID: 1673907119}
+  - component: {fileID: 1673907118}
+  m_Layer: 0
+  m_Name: CoursorSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1673907117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673907116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1598454613}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1673907118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673907116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b167ace555eac847b7038294462c96a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 30
+  effectRadius: 0.5
+  target: {fileID: 1603909967}
+--- !u!114 &1673907119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673907116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a04183a3ee462393d154433334d04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 519420031}
+  coinPusher: {fileID: 1673907118}
 --- !u!1 &1724207425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,6 +1721,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1603909967}
+    - target: {fileID: 8134702580694127979, guid: e76b274ddcdf90142987dc694ac9b66b, type: 3}
+      propertyPath: maxSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134702580694127979, guid: e76b274ddcdf90142987dc694ac9b66b, type: 3}
+      propertyPath: nextWaypointDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
