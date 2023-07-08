@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace _Scripts.Core
 {
@@ -7,43 +8,41 @@ namespace _Scripts.Core
         [SerializeField] private GameObject doorCollider;
         [SerializeField] private bool initialState;
         
+        [SerializeField] private UnityEvent<bool> onDoorStateChanged;
+
+        public bool DoorState => _doorState;
+
         private bool _doorState;
 
         private void Start()
         {
-            UpdateState(initialState);
+            UpdateStateInternal(initialState);
         }
 
-        private void OnMouseDown()
+
+        public void UpdateState(bool openDoor)
         {
-            if (CursorController.Instance.ActiveTrapType == TrapType.Key)
-            {
-                UpdateState(!_doorState);
-            }
+            if(_doorState == openDoor)
+                return;
+            
+            UpdateStateInternal(openDoor);
         }
 
-        private void UpdateState(bool openDoor)
+        public void OpenDoor()
         {
-            if (openDoor)
-            {
-                OpenDoor();
-            }
-            else
-            {
-                CloseDoor();
-            }
+            UpdateState(true);
+        }
 
+        public void CloseDoor()
+        {
+            UpdateState(false);
+        }
+
+        private void UpdateStateInternal(bool openDoor)
+        {
+            onDoorStateChanged?.Invoke(openDoor);
+            doorCollider.SetActive(openDoor);
             _doorState = openDoor;
-        }
-
-        private void OpenDoor()
-        {
-            doorCollider.SetActive(true);
-        }
-
-        private void CloseDoor()
-        {
-            doorCollider.SetActive(false);
         }
     }
 }

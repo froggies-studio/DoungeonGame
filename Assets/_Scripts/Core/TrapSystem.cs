@@ -13,6 +13,9 @@ namespace _Scripts.Core
     {
         [SerializeField] private TrapInfoSO[] trapInfo;
         [SerializeField] private TrapCount[] trapCounts;
+        
+        [SerializeField] private LayerMask doorLayer;
+        
         private Dictionary<TrapType, int> _trapCounts;
 
         private Dictionary<TrapType, TrapInfoSO> _trapDictionary;
@@ -68,20 +71,17 @@ namespace _Scripts.Core
                     trapUsed = true;
                     break;
                 case TrapType.Key:
-                    RaycastHit hit;
-                    var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                    if (Physics.Raycast(ray, out hit))
+                    var resultCollider = Physics2D.OverlapCircle(position, 0.5f, doorLayer);
+                    if (resultCollider != null)
                     {
-                        Debug.Log("hit something");
-                        if (hit.collider.gameObject.TryGetComponent(out Door door))
+                        Debug.Log("Hit Door:" + resultCollider.name);
+                        var door = resultCollider.GetComponent<Door>();
+                        if (door != null)
                         {
-                            Debug.Log("Door clicked");
+                            door.UpdateState(!door.DoorState);
+                            trapUsed = true;
                         }
                     }
-
-                    trapUsed = true;
-
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(trapType), trapType, null);
