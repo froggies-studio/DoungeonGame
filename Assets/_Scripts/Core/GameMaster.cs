@@ -1,30 +1,70 @@
+#region
+
 using System;
 using DefaultNamespace;
 using UnityEngine;
 
-namespace Core
+#endregion
+
+namespace _Scripts.Core
 {
     public class GameMaster : MonoBehaviour
     {
-        public static GameMaster Instance { get; private set; }
-        
+        public enum State
+        {
+            None,
+            Start,
+            PlayerWin,
+            PlayerLoose
+        }
+
         [SerializeField] private WayPointSystem wayPointSystem;
         [SerializeField] private GameObject player;
+
+        public State CurrentState { get; private set; }
+        public static GameMaster Instance { get; private set; }
 
         private void Awake()
         {
             Instance = this;
+
+            CurrentState = State.None;
         }
 
         private void Start()
         {
             wayPointSystem.SetAgent(player);
-            wayPointSystem.OnLastPointReached += LevelFinished;
+            wayPointSystem.OnLastPointReached += () => ChangeState(State.PlayerWin);
+
+            ChangeState(State.Start);
         }
 
-        public void LevelFinished()
+        public event Action<State> OnStateChanged;
+
+        public void ChangeState(State newState)
         {
-            Debug.Log("You won!");
+            if (CurrentState == newState)
+            {
+                return;
+            }
+
+            switch (newState)
+            {
+                case State.Start:
+                    Time.timeScale = 1;
+                    break;
+                case State.PlayerWin:
+                    Time.timeScale = 0;
+                    break;
+                case State.PlayerLoose:
+                    Time.timeScale = 0;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
+            }
+
+            CurrentState = newState;
+            OnStateChanged?.Invoke(newState);
         }
     }
 }

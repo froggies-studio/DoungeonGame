@@ -1,5 +1,6 @@
 ﻿#region
 
+using _Scripts.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,22 @@ namespace _Scripts.UI
         {
             restartButton.onClick.AddListener(() => { });
             mainMenuButton.onClick.AddListener(() => { });
+
+            GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
+            
+            Hide();
+        }
+
+        private void GameMasterOnStateChanged(GameMaster.State newState)
+        {
+            if (newState == GameMaster.State.PlayerLoose)
+            {
+                Show();
+            }
+            else
+            {
+                Hide();
+            }
         }
 
         private void Hide()
