@@ -19,6 +19,12 @@ namespace Core
         private void Start()
         {
             wayPointSystem.SetAgent(player);
+            wayPointSystem.OnLastPointReached += LevelFinished;
+        }
+
+        public void LevelFinished()
+        {
+            Debug.Log("You won!");
         }
     }
 }
