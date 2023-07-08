@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Chest
   m_EditorClassIdentifier: 
   prefab: {fileID: 8248717791442500080, guid: 41743badb9d6ef84987adeff2f281ad9, type: 3}
-  trapName: Chest
+  trapType: 1
+  trapPreview: {fileID: 8248717791442500080, guid: fd8bb2b6eed209545ade6470fd2f297a, type: 3}

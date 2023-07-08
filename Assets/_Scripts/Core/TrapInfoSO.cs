@@ -1,15 +1,17 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Core
+namespace _Scripts.Core
 {
     [CreateAssetMenu()]
     public class TrapInfoSO : ScriptableObject
     {
         [SerializeField] private GameObject prefab;
-        [SerializeField] private string trapName;
+        [SerializeField] private TrapType trapType;
+        [SerializeField] private GameObject trapPreview;
+        
         
         public GameObject Prefab => prefab;
-        public string TrapName => trapName;
+        public TrapType TrapType => trapType;
+        public GameObject TrapPreview => trapPreview;
     }
 }

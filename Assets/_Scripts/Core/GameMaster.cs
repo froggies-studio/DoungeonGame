@@ -51,7 +51,7 @@ namespace _Scripts.Core
             switch (newState)
             {
                 case State.Start:
-                    Time.timeScale = 1;
+                    Time.timeScale = 0;
                     break;
                 case State.PlayerWin:
                     Time.timeScale = 0;

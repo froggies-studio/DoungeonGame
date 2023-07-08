@@ -1,3 +1,4 @@
+using _Scripts.Core;
 using Core;
 using UnityEngine;
 
@@ -20,14 +21,14 @@ namespace UI
             {
                 var selectorObject = Instantiate(trapSelectorUI.gameObject, transform);
                 var selectorButtonUI = selectorObject.GetComponent<SelectorButtonUI>();
-                selectorButtonUI.SetTrapIndex(i, TrapSelected);
-                selectorButtonUI.SetTrapName(obj[i].TrapName);
+                selectorButtonUI.SetTrapIndex((TrapType)(i+1), TrapSelected);
+                selectorButtonUI.SetTrapName(obj[i].TrapType);
             }
         }
 
-        public void TrapSelected(int index)
+        public void TrapSelected(TrapType trapType)
         {
-            cursorController.TrapSelected(index);
+            cursorController.TrapSelected(trapType);
         }
     }
 }
