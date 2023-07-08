@@ -18,17 +18,12 @@ namespace _Scripts.Core
         {
             if (CursorController.Instance.ActiveTrapType == TrapType.Key)
             {
-                UpdateState(true);
+                UpdateState(!_doorState);
             }
         }
 
         private void UpdateState(bool openDoor)
         {
-            if (_doorState == openDoor)
-            {
-                return;
-            }
-
             if (openDoor)
             {
                 OpenDoor();
