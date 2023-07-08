@@ -199,13 +199,13 @@ GameObject:
   m_Component:
   - component: {fileID: 289622212}
   - component: {fileID: 289622213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &289622212
 Transform:
   m_ObjectHideFlags: 0
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 935264489}
   - component: {fileID: 935264490}
   - component: {fileID: 935264491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorCollider: {fileID: 289622211}
-  initialState: 0
+  initialState: 1
 --- !u!1 &1021052516
 GameObject:
   m_ObjectHideFlags: 0

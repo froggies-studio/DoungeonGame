@@ -15,7 +15,6 @@ namespace _Scripts.Core
         [SerializeField] private TrapCount[] trapCounts;
         private Dictionary<TrapType, int> _trapCounts;
 
-        // public event Action<TrapInfoSO[]> OnTrapInfoChanged;
         private Dictionary<TrapType, TrapInfoSO> _trapDictionary;
         private Dictionary<TrapType, Transform> _trapPreviews;
 
@@ -30,11 +29,6 @@ namespace _Scripts.Core
             _trapDictionary = trapInfo.ToDictionary(t => t.TrapType, t => t);
             _trapCounts = trapCounts.ToDictionary(t => t.trapType, t => t.baseCount);
             InitTrapPreviews();
-        }
-
-        private void Start()
-        {
-            // OnTrapInfoChanged?.Invoke(trapInfo);
         }
 
         private void InitTrapPreviews()
@@ -55,6 +49,13 @@ namespace _Scripts.Core
                 return false;
             }
 
+            if (Helpers.Helpers.IsOverUI())
+                return false;
+            
+            var preview = _trapPreviews[trapType];
+            if (preview.TryGetComponent<ITrapPlacementValidator>(out var trapPreview) && !trapPreview.IsPlacementValid)
+                return false;
+            
             bool trapUsed = false;
             switch (trapType)
             {
@@ -62,10 +63,6 @@ namespace _Scripts.Core
                     Debug.LogError($"Can't use {TrapType.None}");
                     break;
                 case TrapType.Chest:
-                    if (Helpers.Helpers.IsOverUI())
-                    {
-                        break;
-                    }
                     var trap = _trapDictionary[trapType];
                     SpawnTrap(position, trap);
                     trapUsed = true;
