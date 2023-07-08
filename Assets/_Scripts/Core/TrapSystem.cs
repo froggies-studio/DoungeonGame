@@ -55,12 +55,60 @@ namespace _Scripts.Core
                 return false;
             }
 
-            _trapCounts[trapType] -= 1; 
-            OnTrapCountChanged?.Invoke(trapType, _trapCounts[trapType]);
-            var trap = _trapDictionary[trapType];
-            SpawnTrap(position, trap);
+            bool trapUsed = false;
+            switch (trapType)
+            {
+                case TrapType.None:
+                    Debug.LogError($"Can't use {TrapType.None}");
+                    break;
+                case TrapType.Chest:
+                    var trap = _trapDictionary[trapType];
+                    SpawnTrap(position, trap);
+                    trapUsed = true;
+                    break;
+                case TrapType.Key:
+                    RaycastHit hit;
+                    var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            return true;
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        Debug.Log("hit something");
+                        if (hit.collider.gameObject.TryGetComponent(out Door door))
+                        {
+                            Debug.Log("Door clicked");
+                        }
+                    }
+
+                    trapUsed = true;
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(trapType), trapType, null);
+            }
+
+            if (trapUsed)
+            {
+                _trapCounts[trapType] -= 1;
+                OnTrapCountChanged?.Invoke(trapType, _trapCounts[trapType]);
+            }
+
+            return trapUsed;
+        }
+
+        void A()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit))
+                {Debug.Log("HitSomething");
+                    if (hit.transform.name == "MyObjectName")
+                    {
+                        print("My object is clicked by mouse");
+                    }
+                }
+            }
         }
 
         public event Action<TrapType, int> OnTrapCountChanged;

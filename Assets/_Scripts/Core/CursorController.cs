@@ -18,13 +18,17 @@ namespace _Scripts.Core
 
         private float _lastClickTime;
         private Camera _mainCamera;
-        private TrapType _trapType;
+        public TrapType ActiveTrapType { get; private set; }
+
+        public static CursorController Instance { get; private set; }
 
         private void Awake()
         {
+            Instance = this;
+            
             _mainCamera = Camera.main;
 
-            _trapType = TrapType.None;
+            ActiveTrapType = TrapType.None;
 
             _lastClickTime = float.MinValue;
         }
@@ -44,7 +48,7 @@ namespace _Scripts.Core
                 }
                 
                 var cursorPosition = (Vector2)_mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                if (_trapType != TrapType.None)
+                if (ActiveTrapType != TrapType.None)
                 {
                     SpawnTrap(cursorPosition);
                 }
@@ -61,7 +65,7 @@ namespace _Scripts.Core
                 ResetTrap();
             }
 
-            if (_trapType != TrapType.None)
+            if (ActiveTrapType != TrapType.None)
             {
                 TrapPreviewFollowCursor();
             }
@@ -74,7 +78,7 @@ namespace _Scripts.Core
 
         private void TrapSingleUIOnTrapPressed(TrapType trapType)
         {
-            if (_trapType != trapType && trapSystem.GetTrapCount(trapType) > 0)
+            if (ActiveTrapType != trapType && trapSystem.GetTrapCount(trapType) > 0)
             {
                 TrapSelected(trapType);
             }
@@ -86,12 +90,12 @@ namespace _Scripts.Core
 
         private void SpawnTrap(Vector2 cursorPosition)
         {
-            if (!trapSystem.TryUseTrapAt(_trapType, cursorPosition))
+            if (!trapSystem.TryUseTrapAt(ActiveTrapType, cursorPosition))
             {
                 ResetTrap();
             }
 
-            if (trapSystem.GetTrapCount(_trapType) <= 0)
+            if (trapSystem.GetTrapCount(ActiveTrapType) <= 0)
             {
                 ResetTrap();
             }
@@ -106,20 +110,20 @@ namespace _Scripts.Core
 
         private void ResetTrap()
         {
-            if (_trapType== TrapType.None)
+            if (ActiveTrapType== TrapType.None)
             {
                 return;
             }
             
-            trapSystem.DisableTrapPreview(_trapType);
-            _trapType = TrapType.None;
+            trapSystem.DisableTrapPreview(ActiveTrapType);
+            ActiveTrapType = TrapType.None;
         }
 
         public void TrapSelected(TrapType trapType)
         {
-            _trapType = trapType;
-            trapSystem.EnableTrapPreview(_trapType);
-            _currentTrapPreview = trapSystem.GetTrapPreview(_trapType);
+            ActiveTrapType = trapType;
+            trapSystem.EnableTrapPreview(ActiveTrapType);
+            _currentTrapPreview = trapSystem.GetTrapPreview(ActiveTrapType);
         }
     }
 }
