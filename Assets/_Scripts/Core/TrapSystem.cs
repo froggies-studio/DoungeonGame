@@ -16,7 +16,10 @@ namespace _Scripts.Core
         
         [SerializeField] private LayerMask doorLayer;
         
+        [SerializeField] private float reloadSpeed = 1f;
+        
         private Dictionary<TrapType, int> _trapCounts;
+        private Dictionary<TrapType, float> _trapReloads;
 
         private Dictionary<TrapType, TrapInfoSO> _trapDictionary;
         private Dictionary<TrapType, Transform> _trapPreviews;
@@ -31,6 +34,13 @@ namespace _Scripts.Core
 
             _trapDictionary = trapInfo.ToDictionary(t => t.TrapType, t => t);
             _trapCounts = trapCounts.ToDictionary(t => t.trapType, t => t.baseCount);
+
+            _trapReloads = new Dictionary<TrapType, float>();
+            foreach (var trapInfo in _trapDictionary)
+            {
+                _trapReloads.Add(trapInfo.Key, trapInfo.Value.ReloadTime);
+            }
+            
             InitTrapPreviews();
         }
 
@@ -42,6 +52,29 @@ namespace _Scripts.Core
                 var preview = Instantiate(trapInfoSO.TrapPreview, Vector3.zero, Quaternion.identity);
                 _trapPreviews.Add(trapType, preview.transform);
                 DisableTrapPreview(trapType);
+            }
+        }
+
+        private void Update()
+        {
+            //Really shitty code. Close your eyes :)
+            foreach (var trap in _trapDictionary)
+            {
+                if(_trapCounts[trap.Key] >= trap.Value.MaxCapacity)
+                    return;
+                
+                float reload = _trapReloads[trap.Key];
+                reload -= Time.deltaTime * reloadSpeed;
+                if (reload <= 0)
+                {
+                    _trapCounts[trap.Key] += 1;
+                    _trapReloads[trap.Key] = trap.Value.ReloadTime;
+                    OnTrapCountChanged?.Invoke(trap.Key, _trapCounts[trap.Key]);
+                }
+                else
+                    _trapReloads[trap.Key] = reload;
+                
+                OnTrapReloadChanged?.Invoke(trap.Key, 1 - _trapReloads[trap.Key] / trap.Value.ReloadTime);
             }
         }
 
@@ -97,6 +130,7 @@ namespace _Scripts.Core
         }
 
         public event Action<TrapType, int> OnTrapCountChanged;
+        public event Action<TrapType, float> OnTrapReloadChanged;
 
         public void SpawnTrap(Vector2 position, TrapInfoSO trap)
         {
@@ -125,6 +159,11 @@ namespace _Scripts.Core
             public int baseCount;
         }
 
+        private struct MyStruct
+        {
+            
+        }
+        
         public int GetTrapCount(TrapType trapType)
         {
             return _trapCounts[trapType];
