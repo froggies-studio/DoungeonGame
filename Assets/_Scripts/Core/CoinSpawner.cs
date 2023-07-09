@@ -6,7 +6,7 @@ public class CoinSpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> coinPrefabs;
     [SerializeField] private int count;
-    [SerializeField] private int spawnRadius;
+    [SerializeField] private float spawnRadius;
     [SerializeField] private GameObject player;
 
     public void Spawn()

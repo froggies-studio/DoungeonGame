@@ -2,11 +2,12 @@
 using _Scripts.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace _Scripts.UI
 {
-    public class TrapSingleUI : MonoBehaviour
+    public class TrapSingleUI : UI
     {
         [SerializeField] private Image trapIcon;
         [SerializeField] private Image reloadIcon;
@@ -22,12 +23,11 @@ namespace _Scripts.UI
             button.onClick.AddListener(() =>
             {
                 OnTrapPressed?.Invoke(_trapType);
+                InvokeOnUIPressed();
             });
-            
             TrapSystem.Instance.OnTrapCountChanged += TrapSystemOnTrapCountChanged;
             TrapSystem.Instance.OnTrapReloadChanged += TrapSystemOnTrapReloadChanged;
         }
-
         private void TrapSystemOnTrapReloadChanged(TrapType trapType, float newCount)
         {
             if (_trapType == trapType)

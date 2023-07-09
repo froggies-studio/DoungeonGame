@@ -1,7 +1,6 @@
 #region
 
 using System;
-using DefaultNamespace;
 using UnityEngine;
 
 #endregion
@@ -34,9 +33,16 @@ namespace _Scripts.Core
         private void Start()
         {
             wayPointSystem.SetAgent(player);
-            // wayPointSystem.OnLastPointReached += () => ChangeState(State.PlayerWin);
+            wayPointSystem.OnLastPointReached += () => ChangeState(State.PlayerWin);
+            
+            Player.Instance.OnDead += PlayerOnDead;
 
             ChangeState(State.Start);
+        }
+
+        private void PlayerOnDead()
+        {
+            ChangeState(State.PlayerLoose);
         }
 
         public event Action<State> OnStateChanged;
@@ -51,7 +57,7 @@ namespace _Scripts.Core
             switch (newState)
             {
                 case State.Start:
-                    // Time.timeScale = 0;
+                     Time.timeScale = 1;
                     break;
                 case State.PlayerWin:
                     Time.timeScale = 0;

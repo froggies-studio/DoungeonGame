@@ -1,33 +1,19 @@
-using System;
+#region
+
 using System.Collections.Generic;
 using UnityEngine;
+
+#endregion
 
 namespace _Scripts.Effects
 {
     public class ChestMagnetismEffect : MonoBehaviour
     {
         private const string COIN_TAG = "Coin";
-        
+
         [SerializeField] private LineRenderer linePrefab;
 
         private HashSet<Connection> _coins = new ();
-        
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if(other.gameObject.CompareTag(COIN_TAG))
-                _coins.Add(CreateConnection(other.gameObject));
-        }
-        
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if(other.gameObject.CompareTag(COIN_TAG))
-            {
-                Debug.Assert(_coins.TryGetValue(new Connection(other.gameObject, null), out var connection));
-                connection.DestroyLine();
-                _coins.Remove(connection);
-            }
-        }
 
         private void Update()
         {
@@ -42,6 +28,25 @@ namespace _Scripts.Effects
                 
                 connection.Line.SetPosition(0, transform.position);
                 connection.Line.SetPosition(1, connection.Coin.transform.position);
+            }
+        }
+
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if(other.gameObject.CompareTag(COIN_TAG))
+                _coins.Add(CreateConnection(other.gameObject));
+        }
+        
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if(other.gameObject.CompareTag(COIN_TAG))
+            {
+                bool valueExists =
+                    _coins.TryGetValue(new Connection(other.gameObject, null), out Connection connection);
+                Debug.Assert(valueExists);
+                connection.DestroyLine();
+                _coins.Remove(connection);
             }
         }
         

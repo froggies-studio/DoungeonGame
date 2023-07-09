@@ -15,8 +15,8 @@ TagManager:
   - Obstacle
   - Effectors
   - Doors
-  - 
-  - 
+  - TopLayer
+  - Point_WayPointSystem
   - 
   - 
   - 

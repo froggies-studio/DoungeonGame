@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace _Scripts.UI
 {
-    public class GameLooseUI : MonoBehaviour
+    public class GameLooseUI : UI
     {
         [SerializeField] private Button restartButton;
         [SerializeField] private Button mainMenuButton;
@@ -16,11 +16,20 @@ namespace _Scripts.UI
 
         private void Start()
         {
-            restartButton.onClick.AddListener(() => { });
-            mainMenuButton.onClick.AddListener(() => { });
+            restartButton.onClick.AddListener(() =>
+            {
+                // SceneLoader.Instance.LoadMainMenuScene();
+                InvokeOnUIPressed();
+                SceneLoader.Instance.LoadGameScene();
+            });
+            mainMenuButton.onClick.AddListener(() =>
+            {
+                InvokeOnUIPressed();
+                SceneLoader.Instance.LoadMainMenuScene();
+            });
 
             GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
-            
+
             Hide();
         }
 

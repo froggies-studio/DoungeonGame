@@ -4,14 +4,18 @@ using UnityEngine.UI;
 
 namespace _Scripts.UI
 {
-    public class GameWinUI : MonoBehaviour
+    public class GameWinUI : UI
     {
         [SerializeField] private Button mainMenuButton;
         [SerializeField] private GameObject handle;
 
         private void Start()
         {
-            mainMenuButton.onClick.AddListener(() => { });
+            mainMenuButton.onClick.AddListener(() =>
+            {
+                InvokeOnUIPressed();
+                SceneLoader.Instance.LoadMainMenuScene();
+            });
             
             GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
             Hide();
