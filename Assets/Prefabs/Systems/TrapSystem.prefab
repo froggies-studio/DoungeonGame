@@ -49,9 +49,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 331b1159a8c357a46aceee8b560e2e52, type: 2}
   trapCounts:
   - trapType: 1
-    baseCount: 5
+    baseCount: 3
   - trapType: 2
     baseCount: 5
   doorLayer:
     serializedVersion: 2
     m_Bits: 256
+  reloadSpeed: 1
