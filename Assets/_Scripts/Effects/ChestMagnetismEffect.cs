@@ -22,7 +22,11 @@ namespace _Scripts.Effects
         private void OnTriggerExit2D(Collider2D other)
         {
             if(other.gameObject.CompareTag(COIN_TAG))
-                _coins.Remove(new Connection(other.gameObject, null));
+            {
+                Debug.Assert(_coins.TryGetValue(new Connection(other.gameObject, null), out var connection));
+                connection.DestroyLine();
+                _coins.Remove(connection);
+            }
         }
 
         private void Update()
