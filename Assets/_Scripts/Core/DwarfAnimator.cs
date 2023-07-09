@@ -8,6 +8,7 @@ namespace _Scripts.Core
         [SerializeField] private Rigidbody2D rigidbody2D;
         [SerializeField] private Animator animator;
         [SerializeField] private GameObject spriteHandle;
+        [SerializeField] private GameObject lightHandle;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         [SerializeField] private Sprite frontView;
@@ -38,6 +39,7 @@ namespace _Scripts.Core
                 {
                     case AnimationStates.HorizontalMovement:
                         spriteRenderer.sprite = frontView;
+                        lightHandle.transform.localScale = new Vector3(1, 1, 1);
                         spriteHandle.transform.localScale = velocity.x switch
                         {
                             > 0 => new Vector3(1, 1, 1),
@@ -46,6 +48,12 @@ namespace _Scripts.Core
                         };
                         break;
                     case AnimationStates.VerticalMovement:
+                        lightHandle.transform.localScale = velocity.y switch
+                        {
+                            > 0 => new Vector3(-1, 1, 1),
+                            < 0 => new Vector3(1, 1, 1),
+                            _ => spriteHandle.transform.localScale
+                        };
                         spriteRenderer.sprite = velocity.y switch
                         {
                             > 0 => backView,
