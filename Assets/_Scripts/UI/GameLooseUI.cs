@@ -18,7 +18,7 @@ namespace _Scripts.UI
         {
             restartButton.onClick.AddListener(() =>
             {
-                SceneLoader.Instance.LoadMainMenuScene();
+                // SceneLoader.Instance.LoadMainMenuScene();
                 SceneLoader.Instance.LoadGameScene();
             });
             mainMenuButton.onClick.AddListener(() => { SceneLoader.Instance.LoadMainMenuScene(); });

@@ -8,6 +8,8 @@ namespace _Scripts.Core
         [SerializeField] private CoinReceiver coinReceiver;
         public static Player Instance { get; private set; }
         public event Action OnDead;
+        
+        public CoinReceiver CoinReceiver => coinReceiver;
 
         private void Awake()
         {
