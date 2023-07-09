@@ -1,12 +1,15 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Movement
 {
     public class DirectMovementAI : MonoBehaviour, IMovementAI
     {
-        [SerializeField] private float speed;
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private float speed = 5;
+        [SerializeField] private float accuracy = .02f;
 
         public event Action OnTargetReached;
         
@@ -21,11 +24,12 @@ namespace Movement
         {
             if (_target == null) return;
             
-            transform.position = Vector3.MoveTowards(transform.position, _target.position, speed * Time.deltaTime);
             var distance = _target.position - transform.position;
-            if (distance.sqrMagnitude < .0001f)
+            rb.velocity = distance.normalized * speed;
+            if (distance.sqrMagnitude < (accuracy * accuracy))
             {
                 transform.position = _target.position;
+                rb.velocity = Vector2.zero;
                 _target = null;
                 OnTargetReached?.Invoke();
             }
