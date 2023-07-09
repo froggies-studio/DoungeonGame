@@ -1,51 +1,74 @@
+#region
+
 using System;
 using System.Collections.Generic;
+using _Scripts.Helpers;
 using Movement;
 using UnityEngine;
 
-namespace DefaultNamespace
+#endregion
+
+namespace _Scripts.Core
 {
     public class WayPointSystem : MonoBehaviour
     {
-        [SerializeField] private List<Transform> points;
         [SerializeField] private LineRenderer lineRenderer;
+        [SerializeField] private LayerMask pointLayer;
 
-        public event Action OnLastPointReached;
-        
         private int _currentPointIndex;
         private IMovementAI _movementAI;
+        private List<Transform> _points;
+
+        private void Awake()
+        {
+            LoadAllPoints();
+        }
 
         private void Start()
         {
-            lineRenderer.positionCount = points.Count;
-            for (int i = 0; i < points.Count; i++)
+            lineRenderer.positionCount = _points.Count;
+            for (int i = 0; i < _points.Count; i++)
             {
-                lineRenderer.SetPosition(i, points[i].position);
+                lineRenderer.SetPosition(i, _points[i].position);
+            }
+        }
+
+        public event Action OnLastPointReached;
+
+        private void LoadAllPoints()
+        {
+            _points = new List<Transform>();
+            foreach (Transform point in transform)
+            {
+                if (pointLayer.ContainsLayer(point.gameObject.layer))
+                {
+                    _points.Add(point);
+                }
             }
         }
 
         public void SetAgent(GameObject agent)
         {
             _movementAI = agent.GetComponent<IMovementAI>();
-            
-            if(_movementAI == null)
+
+            if (_movementAI == null)
                 return;
 
             _currentPointIndex = 0;
             _movementAI.OnTargetReached += OnTargetReached;
-            _movementAI.SetTarget(points[_currentPointIndex]);
+            _movementAI.SetTarget(_points[_currentPointIndex]);
         }
 
         private void OnTargetReached()
         {
             _currentPointIndex++;
-            if (_currentPointIndex >= points.Count)
+            if (_currentPointIndex >= _points.Count)
             {
                 OnLastPointReached?.Invoke();
                 return;
             }
-            
-            _movementAI.SetTarget(points[_currentPointIndex]);
+
+            _movementAI.SetTarget(_points[_currentPointIndex]);
         }
     }
 }

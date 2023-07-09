@@ -1,7 +1,6 @@
 #region
 
 using System;
-using DefaultNamespace;
 using UnityEngine;
 
 #endregion
@@ -34,7 +33,7 @@ namespace _Scripts.Core
         private void Start()
         {
             wayPointSystem.SetAgent(player);
-            // wayPointSystem.OnLastPointReached += () => ChangeState(State.PlayerWin);
+            wayPointSystem.OnLastPointReached += () => ChangeState(State.PlayerWin);
 
             ChangeState(State.Start);
         }

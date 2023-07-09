@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace _Scripts.Core
 {
-    public class DwarfAnimator : MonoBehaviour
+    public class PlayerAnimator : MonoBehaviour
     {
         private const string DWARF_IDLE_STATE_NAME = "Dwarf";
         private const string WALK_HORIZONTAL_STATE_NAME = "WalkHorizontal";
@@ -31,45 +31,51 @@ namespace _Scripts.Core
             var absVelocity = new Vector2(Math.Abs(velocity.x), Math.Abs(velocity.y));
             var maxVelocity = Mathf.Max(absVelocity.x, absVelocity.y);
             var animationState = AnimationStates.Idle;
+            
             if (maxVelocity > 0.1f)
             {
                 animationState = absVelocity.x > absVelocity.y ? AnimationStates.HorizontalMovement : AnimationStates.VerticalMovement;
-                switch (animationState)
-                {
-                    case AnimationStates.HorizontalMovement:
-                        spriteRenderer.sprite = frontView;
-                        lightHandle.transform.localScale = new Vector3(1, 1, 1);
-                        spriteHandle.transform.localScale = velocity.x switch
-                        {
-                            > 0 => new Vector3(1, 1, 1),
-                            < 0 => new Vector3(-1, 1, 1),
-                            _ => spriteHandle.transform.localScale
-                        };
-                        break;
-                    case AnimationStates.VerticalMovement:
-                        lightHandle.transform.localScale = velocity.y switch
-                        {
-                            > 0 => new Vector3(-1, 1, 1),
-                            < 0 => new Vector3(1, 1, 1),
-                            _ => spriteHandle.transform.localScale
-                        };
-                        spriteRenderer.sprite = velocity.y switch
-                        {
-                            > 0 => backView,
-                            < 0 => frontView,
-                            _ => frontView
-                        };
-                        break;
-                }
+                PerformAnimation(animationState, velocity);
             }
             
             if (_currentAnimationState != animationState)
             {
-                ChangeAnimation(animationState);
+                SwitchAnimationState(animationState);
             }
         }
 
-        private void ChangeAnimation(AnimationStates animationState)
+        private void PerformAnimation(AnimationStates animationState, Vector2 velocity)
+        {
+            switch (animationState)
+            {
+                case AnimationStates.HorizontalMovement:
+                    spriteRenderer.sprite = frontView;
+                    lightHandle.transform.localScale = new Vector3(1, 1, 1);
+                    spriteHandle.transform.localScale = velocity.x switch
+                    {
+                        > 0 => new Vector3(1, 1, 1),
+                        < 0 => new Vector3(-1, 1, 1),
+                        _ => spriteHandle.transform.localScale
+                    };
+                    break;
+                case AnimationStates.VerticalMovement:
+                    lightHandle.transform.localScale = velocity.y switch
+                    {
+                        > 0 => new Vector3(-1, 1, 1),
+                        < 0 => new Vector3(1, 1, 1),
+                        _ => spriteHandle.transform.localScale
+                    };
+                    spriteRenderer.sprite = velocity.y switch
+                    {
+                        > 0 => backView,
+                        < 0 => frontView,
+                        _ => frontView
+                    };
+                    break;
+            }
+        }
+
+        private void SwitchAnimationState(AnimationStates animationState)
         {
             _currentAnimationState = animationState;
             // animator.SetInteger(State, (int) animationState);

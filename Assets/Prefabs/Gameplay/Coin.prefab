@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  maxSpeed: 2
+  maxSpeed: 5
   acceleration: 900
   nextWaypointDistance: 1
 --- !u!114 &5331014175683779158
