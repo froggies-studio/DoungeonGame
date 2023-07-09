@@ -16,11 +16,15 @@ namespace _Scripts.UI
 
         private void Start()
         {
-            restartButton.onClick.AddListener(() => { });
-            mainMenuButton.onClick.AddListener(() => { });
+            restartButton.onClick.AddListener(() =>
+            {
+                SceneLoader.Instance.LoadMainMenuScene();
+                SceneLoader.Instance.LoadGameScene();
+            });
+            mainMenuButton.onClick.AddListener(() => { SceneLoader.Instance.LoadMainMenuScene(); });
 
             GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
-            
+
             Hide();
         }
 
