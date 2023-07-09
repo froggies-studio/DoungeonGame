@@ -25,7 +25,7 @@ namespace _Scripts.UI
             mainMenuButton.onClick.AddListener(() =>
             {
                 InvokeOnUIPressed();
-                SceneLoader.Instance.LoadMainMenuScene();
+                SceneLoader.Instance.LoadLevel1();
             });
 
             GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;

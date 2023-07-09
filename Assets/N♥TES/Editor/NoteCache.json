@@ -1,10 +1,10 @@
 {
     "notes": [
         {
-            "noteText": "All Points will be loaded in a runtime",
+            "noteText": "",
             "show": true,
-            "typeName": "UnityEngine.GameObject",
-            "GlobalObjectSerialization": "GlobalObjectId_V1-2-8c9cfa26abfee488c85f1582747f6a02-1943982973-0"
+            "typeName": "UnityEngine.Material",
+            "GlobalObjectSerialization": "GlobalObjectId_V1-0-00000000000000000000000000000000-0-0"
         }
     ]
 }

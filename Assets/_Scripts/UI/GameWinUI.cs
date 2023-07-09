@@ -7,6 +7,7 @@ namespace _Scripts.UI
     public class GameWinUI : UI
     {
         [SerializeField] private Button mainMenuButton;
+        [SerializeField] private Button lvlOne;
         [SerializeField] private GameObject handle;
 
         private void Start()
@@ -16,6 +17,16 @@ namespace _Scripts.UI
                 InvokeOnUIPressed();
                 SceneLoader.Instance.LoadMainMenuScene();
             });
+
+            if (lvlOne != null)
+            {
+                lvlOne.onClick.AddListener(() =>
+                {
+                    InvokeOnUIPressed();
+                    SceneLoader.Instance.LoadLevel1();
+                });
+            }
+            
             
             GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
             Hide();

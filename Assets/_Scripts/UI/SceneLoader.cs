@@ -28,5 +28,10 @@ namespace _Scripts.UI
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
+        
+        public void LoadLevel1()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        }
     }
 }
