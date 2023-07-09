@@ -17,6 +17,7 @@ namespace _Scripts.UI
         [SerializeField] private AudioClip backgroundMusic;
         [SerializeField] private AudioClip doorOpened;
         [SerializeField] private AudioClip doorClosed;
+        [SerializeField] private AudioClip buttonPressed;
 
         [SerializeField] private float globalVolume = 0.7f;
         public static AudioManager Instance { get; private set; }
@@ -34,6 +35,12 @@ namespace _Scripts.UI
             Chest.OnChestCoinReceived += ChestOnChestCoinReceived;
             Door.OnDoorOpened += DoorOnDoorOpened;
             Door.OnDoorClosed += DoorOnDoorClosed;
+            UI.OnUIPressed += UIOnUIPressed;
+        }
+
+        private void UIOnUIPressed()
+        {
+            PlaySound(buttonPressed, Player.Instance.transform.position, 1.3f);
         }
 
         private void OnDestroy()

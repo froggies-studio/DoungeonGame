@@ -311,6 +311,7 @@ MonoBehaviour:
   backgroundMusic: {fileID: 8300000, guid: 31640e0a0b932bc4294ddf2012cf4174, type: 3}
   doorOpened: {fileID: 8300000, guid: 88883f542bb9f6a4c981f4fc3c6b5fda, type: 3}
   doorClosed: {fileID: 8300000, guid: 88883f542bb9f6a4c981f4fc3c6b5fda, type: 3}
+  buttonPressed: {fileID: 8300000, guid: 34ef30f79a8810744996816321a5e7c6, type: 3}
   globalVolume: 0.7
 --- !u!1001 &84210500
 PrefabInstance:
