@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace _Scripts.Core
@@ -10,6 +11,8 @@ namespace _Scripts.Core
         
         [SerializeField] private UnityEvent<bool> onDoorStateChanged;
 
+        public static event Action<Vector3> OnDoorOpened;
+        public static event Action<Vector3> OnDoorClosed; 
         public bool DoorState => _doorState;
 
         private bool _doorState;
@@ -43,6 +46,14 @@ namespace _Scripts.Core
             onDoorStateChanged?.Invoke(openDoor);
             doorCollider.SetActive(openDoor);
             _doorState = openDoor;
+            if (openDoor)
+            {
+                OnDoorOpened?.Invoke(transform.position);
+            }
+            else
+            {
+                OnDoorClosed?.Invoke(transform.position);
+            }
         }
     }
 }

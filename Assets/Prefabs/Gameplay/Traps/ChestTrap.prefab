@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 3589094869142058113}
   - component: {fileID: 2072291308292183100}
   - component: {fileID: 3786399344369469716}
+  - component: {fileID: 534143390869477536}
   m_Layer: 6
   m_Name: ChestTrap
   m_TagString: Untagged
@@ -259,6 +260,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   coinDamageEffectPrefab: {fileID: 0}
+--- !u!114 &534143390869477536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248717791442500080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6dcf02e9fe4fa5bd9b9c35dd0a95df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinReceiver: {fileID: 3786399344369469716}
 --- !u!1 &8914904732809088269
 GameObject:
   m_ObjectHideFlags: 0
