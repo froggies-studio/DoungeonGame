@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7030934805088337323}
   - component: {fileID: 6120737303881088427}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: SmallExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,8 +168,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
+      minMaxState: 3
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -287,8 +287,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.01
+      scalar: 0.2
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2634,7 +2634,7 @@ ParticleSystem:
     magnitude:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2688,11 +2688,11 @@ ParticleSystem:
     inWorldSpace: 0
     multiplyDragByParticleSize: 1
     multiplyDragByParticleVelocity: 1
-    dampen: 0.2
+    dampen: 0.44
     drag:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2743,7 +2743,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
       serializedVersion: 2
       minMaxState: 3
@@ -4932,7 +4932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759ccd93ff1848d6b145e4fafcd59092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 5
+  delay: 3
 --- !u!1001 &1880104369997697166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4988,6 +4988,30 @@ PrefabInstance:
     - target: {fileID: 3405501324826305174, guid: 8653a32d33a3dd24f939d8894e831c3a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644546754093835664, guid: 8653a32d33a3dd24f939d8894e831c3a, type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644546754093835664, guid: 8653a32d33a3dd24f939d8894e831c3a, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644546754093835664, guid: 8653a32d33a3dd24f939d8894e831c3a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644546754093835664, guid: 8653a32d33a3dd24f939d8894e831c3a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.23021233
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644546754093835664, guid: 8653a32d33a3dd24f939d8894e831c3a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.4936285
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644546754093835664, guid: 8653a32d33a3dd24f939d8894e831c3a, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 65535
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
