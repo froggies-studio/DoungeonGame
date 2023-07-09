@@ -11,7 +11,7 @@ namespace _Scripts.UI
 
         private void Start()
         {
-            mainMenuButton.onClick.AddListener(() => { });
+            mainMenuButton.onClick.AddListener(() => {SceneLoader.Instance.LoadMainMenuScene(); });
             
             GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
             Hide();
