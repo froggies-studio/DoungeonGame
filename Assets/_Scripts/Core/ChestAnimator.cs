@@ -27,7 +27,7 @@ namespace _Scripts.Core
 
         private void CoinReceiverOnDamageReceived(float obj)
         {
-            _animator.SetTrigger(DamageReceived);
+            // _animator.SetTrigger(DamageReceived);
             _animator.CrossFade(CHEST_DAMAGE_RECEIVED_STATE_NAME,0,0);
         }
     }
