@@ -15,6 +15,9 @@ namespace _Scripts.Core
         [SerializeField] private float effectRadius;
         [SerializeField] private Transform target;
 
+        [SerializeField] private GameObject clickPushEffect;
+        
+        
         private Collider2D[] _colliders = new Collider2D[MAX_COLLIDER_COUNT];
 
         private void OnDrawGizmosSelected()
@@ -23,7 +26,9 @@ namespace _Scripts.Core
         }
 
         public void Push(Vector2 position)
-        {
+        { 
+            Instantiate(clickPushEffect, position, Quaternion.identity, transform);
+            
             int count = Physics2D.OverlapCircleNonAlloc(position, effectRadius, _colliders);
             for (int i = 0; i < count; i++)
             {

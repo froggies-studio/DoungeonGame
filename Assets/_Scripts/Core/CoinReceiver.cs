@@ -7,6 +7,7 @@ namespace _Scripts.Core
     public class CoinReceiver : MonoBehaviour
     {
         [SerializeField] private float maxHealth;
+        [SerializeField] private GameObject coinDamageEffectPrefab;
 
         public float MaxHealth => maxHealth;
 
@@ -30,11 +31,11 @@ namespace _Scripts.Core
             
             if (other.gameObject.TryGetComponent<CoinDamager>(out var damager))
             {
-                ReceiveDamage(damager);
+                ReceiveDamage(damager, other.contacts[0].point);
             }
         }
 
-        private void ReceiveDamage(CoinDamager damager)
+        private void ReceiveDamage(CoinDamager damager, Vector2 impactPoint)
         {
             _currentHealth -= damager.Damage;
 
@@ -47,6 +48,12 @@ namespace _Scripts.Core
                 }
 
                 _currentHealth = 0;
+            }
+
+            if(coinDamageEffectPrefab != null)
+            {
+                var effect = Instantiate(coinDamageEffectPrefab, impactPoint, Quaternion.identity);
+                effect.transform.right = (Vector3) impactPoint - transform.position;
             }
             
             damager.DamageReceived();

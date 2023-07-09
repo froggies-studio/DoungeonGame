@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  coinDamageEffectPrefab: {fileID: 3776757440141379083, guid: bc070a2ca3248ba4db84ecc5e5b6507a, type: 3}
 --- !u!50 &4668134439545335539
 Rigidbody2D:
   serializedVersion: 4

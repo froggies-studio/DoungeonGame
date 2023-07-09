@@ -39,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: EffectsBg
+    uniqueID: 2120952111
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: EffectsFg
+    uniqueID: 293097909
     locked: 0
