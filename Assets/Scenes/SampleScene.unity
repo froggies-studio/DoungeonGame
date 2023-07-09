@@ -17973,7 +17973,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2014230530836454205, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2944643576370925788, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
       propertyPath: m_Pivot.x
@@ -18076,8 +18076,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4f985209ecc38ed4ab92ce862c4ed891, type: 2}
     - target: {fileID: 5905746562910090437, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
+      propertyPath: m_fontStyle
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905746562910090437, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2401716396393745954, guid: 4f985209ecc38ed4ab92ce862c4ed891, type: 2}
+    - target: {fileID: 5905746562910090437, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
