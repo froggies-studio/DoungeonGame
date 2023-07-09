@@ -24,8 +24,6 @@ namespace _Scripts.UI
                 TrapSingleUI trapUI = Instantiate(trapUITemplate, transform);
                 trapUI.SetTrapInfoSO(trapInfoSO, trapSystem.GetTrapCount(trapInfoSO.TrapType));
             }
-            
-            trapUITemplate.gameObject.SetActive(false);
         }
     }
 }
