@@ -1,10 +1,19 @@
+#region
+
 using System;
 using UnityEngine;
+
+#endregion
 
 namespace _Scripts.Core
 {
     public class DwarfAnimator : MonoBehaviour
     {
+        private const string DWARF_IDLE_STATE_NAME = "Dwarf";
+        private const string WALK_HORIZONTAL_STATE_NAME = "WalkHorizontal";
+        private const string WALK_VERTICAL_STATE_NAME = "WalkVertical";
+
+        private static readonly int State = Animator.StringToHash("AnimationState");
         [SerializeField] private Rigidbody2D rigidbody2D;
         [SerializeField] private Animator animator;
         [SerializeField] private GameObject spriteHandle;
@@ -13,17 +22,8 @@ namespace _Scripts.Core
 
         [SerializeField] private Sprite frontView;
         [SerializeField] private Sprite backView;
-        
-        private static readonly int State = Animator.StringToHash("AnimationState");
 
         private AnimationStates _currentAnimationState = AnimationStates.Idle;
-        
-        private enum AnimationStates
-        {
-            Idle = 0,
-            HorizontalMovement = 1,
-            VerticalMovement = 2,
-        }
 
         private void Update()
         {
@@ -34,7 +34,6 @@ namespace _Scripts.Core
             if (maxVelocity > 0.1f)
             {
                 animationState = absVelocity.x > absVelocity.y ? AnimationStates.HorizontalMovement : AnimationStates.VerticalMovement;
-
                 switch (animationState)
                 {
                     case AnimationStates.HorizontalMovement:
@@ -66,9 +65,37 @@ namespace _Scripts.Core
             
             if (_currentAnimationState != animationState)
             {
-                _currentAnimationState = animationState;
-                animator.SetInteger(State, (int) animationState);
+                ChangeAnimation(animationState);
             }
+        }
+
+        private void ChangeAnimation(AnimationStates animationState)
+        {
+            _currentAnimationState = animationState;
+            // animator.SetInteger(State, (int) animationState);
+            switch (_currentAnimationState)
+            {
+                case AnimationStates.Idle:
+                    animator.CrossFade(DWARF_IDLE_STATE_NAME, 0, 0);
+                    break;
+                case AnimationStates.HorizontalMovement:
+                    animator.CrossFade(WALK_HORIZONTAL_STATE_NAME, 0, 0);
+
+                    break;
+                case AnimationStates.VerticalMovement:
+                    animator.CrossFade(WALK_VERTICAL_STATE_NAME, 0, 0);
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private enum AnimationStates
+        {
+            Idle = 0,
+            HorizontalMovement = 1,
+            VerticalMovement = 2,
         }
     }
 }
