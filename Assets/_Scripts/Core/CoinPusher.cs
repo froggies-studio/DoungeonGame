@@ -13,6 +13,7 @@ namespace _Scripts.Core
 
         [SerializeField] private float force;
         [SerializeField] private float effectRadius;
+        [SerializeField] private float knockDownTime = .5f;
         [SerializeField] private Transform target;
 
         [SerializeField] private GameObject clickPushEffect;
@@ -38,7 +39,7 @@ namespace _Scripts.Core
                     continue;
             
                 var direction = (coinObject.transform.position - target.position).normalized;
-                coinObject.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
+                coinObject.GetComponent<CoinMovementController>().Push(direction, force, knockDownTime);
             }
         }
     }
