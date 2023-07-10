@@ -3,6 +3,7 @@
 using System;
 using _Scripts.Core;
 using _Scripts.Managers;
+using _Scripts.Units;
 using UnityEngine;
 
 #endregion
@@ -31,7 +32,7 @@ namespace _Scripts.UI
 
         private void Start()
         {
-            Player.Instance.CoinReceiver.OnDamageReceived += PlayerOnDamageReceived;
+            // Player.Instance.CoinReceiver.OnDamageReceived += PlayerOnDamageReceived;
             GameManager.OnBeforeStateChanged += GameMasterOnBeforeStateChanged;
             Chest.OnChestCoinReceived += ChestOnChestCoinReceived;
             Door.OnDoorOpened += DoorOnDoorOpened;
@@ -46,7 +47,7 @@ namespace _Scripts.UI
 
         private void OnDestroy()
         {
-            Player.Instance.CoinReceiver.OnDamageReceived -= PlayerOnDamageReceived;
+            // Player.Instance.CoinReceiver.OnDamageReceived -= PlayerOnDamageReceived;
             GameManager.OnBeforeStateChanged -= GameMasterOnBeforeStateChanged;
             Chest.OnChestCoinReceived -= ChestOnChestCoinReceived;
             Door.OnDoorOpened -= DoorOnDoorOpened;  
