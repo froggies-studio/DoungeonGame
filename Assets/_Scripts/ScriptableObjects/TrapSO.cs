@@ -1,9 +1,11 @@
+using _Scripts.Core;
+using _Scripts.Units;
 using UnityEngine;
 
-namespace _Scripts.Core
+namespace _Scripts.ScriptableObjects
 {
-    [CreateAssetMenu()]
-    public class TrapInfoSO : ScriptableObject
+    [CreateAssetMenu(menuName = "Create TrapSO", fileName = "_TrapSO", order = 0)]
+    public class TrapSO : ScriptableObject
     {
         [SerializeField] private GameObject prefab;
         [SerializeField] private TrapType trapType;
@@ -18,5 +20,10 @@ namespace _Scripts.Core
         public Sprite Icon => icon;
         public float ReloadTime => reloadTime;
         public float MaxCapacity => maxCapacity;
+        
+        
+        // ------------------------
+
+        public BaseTrap prefab1;
     }
 }
