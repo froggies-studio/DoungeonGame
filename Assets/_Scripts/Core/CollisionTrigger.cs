@@ -1,28 +1,30 @@
-using JetBrains.Annotations;
+using System;
+using _Scripts.Helpers;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace Core
+namespace _Scripts.Core
 {
     public class CollisionTrigger : MonoBehaviour
     {
-        [SerializeField] private UnityEvent onTriggerEnter;
-        [SerializeField] [CanBeNull] private GameObject target;
-        [SerializeField] private bool isTriggeredOnce;
-        
+        [SerializeField] private bool oneTimeTrigger;
+        [SerializeField] private LayerMask targetLayers;
+
+        public event Action OnTriggerEnter;
         private bool _isTriggered;
-        
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(target != null && other.gameObject != target) 
+            if (!targetLayers.ContainsLayer(other.gameObject.layer))
+            {
                 return;
-            
-            if (isTriggeredOnce && _isTriggered)
+            }
+
+            if (oneTimeTrigger && _isTriggered)
                 return;
-                
-            onTriggerEnter?.Invoke();
+
             _isTriggered = true;
+
+            OnTriggerEnter?.Invoke();
         }
-        
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace _Scripts.UI
 {
-    public class TrapSingleUI : UI
+    public class TrapSingleUI : UIBase
     {
         [SerializeField] private Image trapIcon;
         [SerializeField] private Image reloadIcon;

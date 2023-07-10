@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace _Scripts.UI
 {
-    public class GameLooseUI : UI
+    public class GameLooseUI : UIBase
     {
         [SerializeField] private Button restartButton;
         [SerializeField] private Button mainMenuButton;

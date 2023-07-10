@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace _Scripts.UI
 {
-    public class GameWinUI : UI
+    public class GameWinUI : UIBase
     {
         [SerializeField] private Button mainMenuButton;
         [SerializeField] private Button lvlOne;

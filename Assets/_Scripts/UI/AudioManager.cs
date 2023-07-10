@@ -36,7 +36,7 @@ namespace _Scripts.UI
             Chest.OnChestCoinReceived += ChestOnChestCoinReceived;
             Door.OnDoorOpened += DoorOnDoorOpened;
             Door.OnDoorClosed += DoorOnDoorClosed;
-            UI.OnUIPressed += UIOnUIPressed;
+            UIBase.OnUIPressed += UIOnUIPressed;
         }
 
         private void UIOnUIPressed()

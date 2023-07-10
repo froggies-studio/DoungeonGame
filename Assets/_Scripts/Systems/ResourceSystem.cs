@@ -34,7 +34,7 @@ namespace _Scripts.Systems
             Debug.Assert(TrapsSO.Count != 0, "TrapsSO not gathered");
             
             CoinSO = Resources.LoadAll<CoinSO>(COIN_RESOURCES_PATH).FirstOrDefault();
-            Debug.Assert(CoinSO == null, "CoinSO == null");
+            Debug.Assert(CoinSO != null, "CoinSO == null");
         }
 
         public TrapSO GetTrapSO(TrapType trapType)
