@@ -16,5 +16,25 @@ namespace _Scripts.Helpers
             EventSystem.current.RaycastAll(_eventDataCurrentPosition, _results);
             return _results.Count > 0;
         }
+
+        public static void DestroyChildren(this Transform transform)
+        {
+            foreach (Transform child in transform)
+            {
+                Object.Destroy(child.gameObject);
+            }
+        }
+
+        public static void DestroyChildrenExcept(this Transform transform, GameObject exceptGameObject)
+        {
+            foreach (Transform child in transform)
+            {
+                var gameObject = child.gameObject;
+                if (gameObject != exceptGameObject)
+                {
+                    Object.Destroy(gameObject);
+                }
+            }
+        }
     }
 }
