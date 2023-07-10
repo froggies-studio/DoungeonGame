@@ -6,6 +6,7 @@ namespace _Scripts.Stats
     {
         Speed,
         MaxHp,
+        DamageAmount,
         [InspectorName(null)] CurrentHp,
     }
 }

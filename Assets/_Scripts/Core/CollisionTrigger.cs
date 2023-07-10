@@ -1,6 +1,10 @@
+#region
+
 using System;
 using _Scripts.Helpers;
 using UnityEngine;
+
+#endregion
 
 namespace _Scripts.Core
 {
@@ -8,8 +12,7 @@ namespace _Scripts.Core
     {
         [SerializeField] private bool oneTimeTrigger;
         [SerializeField] private LayerMask targetLayers;
-
-        public event Action OnTriggerEnter;
+        
         private bool _isTriggered;
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -26,5 +29,7 @@ namespace _Scripts.Core
 
             OnTriggerEnter?.Invoke();
         }
+
+        public event Action OnTriggerEnter;
     }
 }

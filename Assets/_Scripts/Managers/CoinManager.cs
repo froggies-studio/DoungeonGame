@@ -1,5 +1,7 @@
 ﻿using _Scripts.Helpers;
 using _Scripts.Systems;
+using _Scripts.Units;
+using Movement;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 
@@ -20,6 +22,7 @@ namespace _Scripts.Managers
             var spawned = Instantiate(coinSO.prefab, position, Quaternion.identity, transform);
             
             spawned.SetStats(coinSO.BaseStats);
+            spawned.GetComponent<AStartRigidBody>().SetTarget(Player.Instance.transform);
         }
     }
 }

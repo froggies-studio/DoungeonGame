@@ -17226,7 +17226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1636205826}
   m_Layer: 0
-  m_Name: Lvl3_0
+  m_Name: LevelWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18803,7 +18803,7 @@ MonoBehaviour:
     statsDictionary:
       _serializedList:
       - Key: 0
-        Value: 1
+        Value: 5
       - Key: 1
         Value: 10
 --- !u!114 &2098490217 stripped
@@ -18931,11 +18931,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5434223156301339991, guid: 1924bfe2d9dd8834287ee17286da8f2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 12.68
       objectReference: {fileID: 0}
     - target: {fileID: 5434223156301339991, guid: 1924bfe2d9dd8834287ee17286da8f2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.62
+      value: 3.76
       objectReference: {fileID: 0}
     - target: {fileID: 5434223156301339991, guid: 1924bfe2d9dd8834287ee17286da8f2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18992,11 +18992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686035485746383038, guid: a03fff7d119584948a4a3dd65ad983ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.94
+      value: 12.66
       objectReference: {fileID: 0}
     - target: {fileID: 1686035485746383038, guid: a03fff7d119584948a4a3dd65ad983ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.69
+      value: 10.79
       objectReference: {fileID: 0}
     - target: {fileID: 1686035485746383038, guid: a03fff7d119584948a4a3dd65ad983ef, type: 3}
       propertyPath: m_LocalPosition.z
