@@ -17,7 +17,7 @@ public class CoinSpawner : MonoBehaviour
             var randomCoin = coinPrefabs[randomIndex];
             var randomPosition = Random.insideUnitCircle * spawnRadius;
             var coin = Instantiate(randomCoin, transform.position + (Vector3) randomPosition, Quaternion.identity);
-            coin.GetComponent<AStartRigidBody>().SetTarget(player.transform);
+            // coin.GetComponent<AStartRigidBody>().SetTarget(player.transform);
         }
     }
 

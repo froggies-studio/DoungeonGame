@@ -1,6 +1,7 @@
 ﻿#region
 
 using _Scripts.Core;
+using _Scripts.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,14 +29,14 @@ namespace _Scripts.UI
                 SceneLoader.Instance.LoadLevel1();
             });
 
-            GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
+            GameManager.OnBeforeStateChanged += GameMasterOnBeforeStateChanged;
 
             Hide();
         }
 
-        private void GameMasterOnStateChanged(GameMaster.State newState)
+        private void GameMasterOnBeforeStateChanged(GameState newGameState)
         {
-            if (newState == GameMaster.State.PlayerLoose)
+            if (newGameState == GameState.PlayerLoose)
             {
                 Show();
             }

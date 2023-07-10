@@ -1,4 +1,4 @@
-﻿using _Scripts.Core;
+﻿using _Scripts.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,13 +28,13 @@ namespace _Scripts.UI
             }
             
             
-            GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
+            GameManager.OnAfterStateChanged += GameMasterOnBeforeStateChanged;
             Hide();
         }
 
-        private void GameMasterOnStateChanged(GameMaster.State newState)
+        private void GameMasterOnBeforeStateChanged(GameState newGameState)
         {
-            if (newState == GameMaster.State.PlayerWin)
+            if (newGameState == GameState.PlayerWin)
             {
                 Show();
             }
@@ -52,6 +52,11 @@ namespace _Scripts.UI
         private void Show()
         {
             handle.SetActive(true);
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.OnAfterStateChanged -= GameMasterOnBeforeStateChanged;
         }
     }
 }

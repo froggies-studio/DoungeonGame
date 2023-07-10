@@ -1,5 +1,6 @@
 ﻿using System;
 using _Scripts.Core;
+using _Scripts.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -44,11 +45,11 @@ namespace _Scripts.UI
             }
         }
 
-        public void SetTrapInfoSO(TrapInfoSO trapInfoSO, int count)
+        public void SetTrapInfoSO(TrapSO trapSO, int count)
         {
-            trapIcon.sprite = trapInfoSO.Icon;
+            trapIcon.sprite = trapSO.Icon;
             counterText.text = count.ToString();
-            _trapType = trapInfoSO.TrapType;
+            _trapType = trapSO.TrapType;
         }
     }
 }

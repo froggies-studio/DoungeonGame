@@ -1,5 +1,6 @@
 ﻿using System;
 using _Scripts.Core;
+using _Scripts.Managers;
 using UnityEngine;
 
 namespace _Scripts.UI
@@ -10,17 +11,17 @@ namespace _Scripts.UI
         
         private void Start()
         {
-            GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
+            GameManager.OnBeforeStateChanged += GameMasterOnBeforeStateChanged;
         }
 
-        private void GameMasterOnStateChanged(GameMaster.State obj)
+        private void GameMasterOnBeforeStateChanged(GameState obj)
         {
-            audioSource.enabled = obj == GameMaster.State.Start;
+            audioSource.enabled = obj == GameState.Starting;
         }
 
         private void OnDestroy()
         {
-            GameMaster.Instance.OnStateChanged -= GameMasterOnStateChanged;
+            GameManager.OnBeforeStateChanged -= GameMasterOnBeforeStateChanged;
         }
     }
 }

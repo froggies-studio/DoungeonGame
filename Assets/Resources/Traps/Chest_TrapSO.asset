@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4183be5c4e54dcdabcc74311f156927, type: 3}
+  m_Name: Chest_TrapSO
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8248717791442500080, guid: 41743badb9d6ef84987adeff2f281ad9, type: 3}
+  trapType: 1
+  trapPreview: {fileID: 8248717791442500080, guid: fd8bb2b6eed209545ade6470fd2f297a, type: 3}
+  icon: {fileID: 21300000, guid: ce76e796585a57b42aaec171653e5512, type: 3}
+  reloadTime: 30
+  maxCapacity: 3

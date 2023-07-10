@@ -2,6 +2,7 @@
 
 using System;
 using _Scripts.Core;
+using _Scripts.Managers;
 using UnityEngine;
 
 #endregion
@@ -31,7 +32,7 @@ namespace _Scripts.UI
         private void Start()
         {
             Player.Instance.CoinReceiver.OnDamageReceived += PlayerOnDamageReceived;
-            GameMaster.Instance.OnStateChanged += GameMasterOnStateChanged;
+            GameManager.OnBeforeStateChanged += GameMasterOnBeforeStateChanged;
             Chest.OnChestCoinReceived += ChestOnChestCoinReceived;
             Door.OnDoorOpened += DoorOnDoorOpened;
             Door.OnDoorClosed += DoorOnDoorClosed;
@@ -46,7 +47,7 @@ namespace _Scripts.UI
         private void OnDestroy()
         {
             Player.Instance.CoinReceiver.OnDamageReceived -= PlayerOnDamageReceived;
-            GameMaster.Instance.OnStateChanged -= GameMasterOnStateChanged;
+            GameManager.OnBeforeStateChanged -= GameMasterOnBeforeStateChanged;
             Chest.OnChestCoinReceived -= ChestOnChestCoinReceived;
             Door.OnDoorOpened -= DoorOnDoorOpened;  
             Door.OnDoorClosed -= DoorOnDoorClosed;
@@ -67,17 +68,17 @@ namespace _Scripts.UI
             PlaySound(chestCollectCoin, obj, 0.3f);
         }
 
-        private void GameMasterOnStateChanged(GameMaster.State obj)
+        private void GameMasterOnBeforeStateChanged(GameState obj)
         {
             switch (obj)
             {
-                case GameMaster.State.Start:
+                case GameState.Starting:
                     PlaySound(backgroundMusic, Player.Instance.transform.position);
                     break;
-                case GameMaster.State.PlayerWin:
+                case GameState.PlayerWin:
                     PlaySound(winSound, Player.Instance.transform.position);
                     break;
-                case GameMaster.State.PlayerLoose:
+                case GameState.PlayerLoose:
                     PlaySound(deathSound, Player.Instance.transform.position);
                     break;
                 default:

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.ScriptableObjects;
 using UnityEngine;
 
 #endregion
@@ -11,7 +12,7 @@ namespace _Scripts.Core
 {
     public class TrapSystem : MonoBehaviour
     {
-        [SerializeField] private TrapInfoSO[] trapInfo;
+        [SerializeField] private TrapSO[] trapInfo;
         [SerializeField] private TrapCount[] trapCounts;
         
         [SerializeField] private LayerMask doorLayer;
@@ -21,12 +22,12 @@ namespace _Scripts.Core
         private Dictionary<TrapType, int> _trapCounts;
         private Dictionary<TrapType, float> _trapReloads;
 
-        private Dictionary<TrapType, TrapInfoSO> _trapDictionary;
+        private Dictionary<TrapType, TrapSO> _trapDictionary;
         private Dictionary<TrapType, Transform> _trapPreviews;
 
         public static TrapSystem Instance { get; private set; }
 
-        public TrapInfoSO[] TrapInfos => trapInfo;
+        public TrapSO[] TrapInfos => trapInfo;
 
         private void Awake()
         {
@@ -132,7 +133,7 @@ namespace _Scripts.Core
         public event Action<TrapType, int> OnTrapCountChanged;
         public event Action<TrapType, float> OnTrapReloadChanged;
 
-        public void SpawnTrap(Vector2 position, TrapInfoSO trap)
+        public void SpawnTrap(Vector2 position, TrapSO trap)
         {
             Instantiate(trap.Prefab, position, Quaternion.identity);
         }
