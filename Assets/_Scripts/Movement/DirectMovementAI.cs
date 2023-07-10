@@ -1,21 +1,32 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Movement
+namespace _Scripts.Movement
 {
-    public class DirectMovementAI : MonoBehaviour, IMovementAI
+    public class DirectMovementAI : MovementAIAgent
     {
-        [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private float speed = 5;
-        [SerializeField] private float accuracy = .02f;
+        private const float ACCURACY = .08f;
 
-        public event Action OnTargetReached;
-        
         [CanBeNull] private Transform _target;
-        
-        public void SetTarget(Transform point)
+
+        private Transform _transform;
+
+        private void Awake()
+        {
+            _transform = transform;
+        }
+
+        private void Start()
+        {
+#if DEBUG
+
+            Speed = 5f;
+
+#endif
+        }
+
+        public override void SetTarget(Transform point)
         {
             _target = point;
         }
@@ -23,15 +34,18 @@ namespace Movement
         private void Update()
         {
             if (_target == null) return;
-            
-            var distance = _target.position - transform.position;
-            rb.velocity = distance.normalized * speed;
-            if (distance.sqrMagnitude < (accuracy * accuracy))
+
+            var position = _transform.position;
+            var targetPosition = _target.position;
+
+            _transform.position = Vector3.MoveTowards(position, targetPosition, Speed * Time.deltaTime);
+
+            if (Vector3.Distance(position, targetPosition) < ACCURACY)
             {
-                transform.position = _target.position;
-                rb.velocity = Vector2.zero;
+                transform.position = targetPosition;
                 _target = null;
-                OnTargetReached?.Invoke();
+
+                InvokeOnTargetReached();
             }
         }
     }

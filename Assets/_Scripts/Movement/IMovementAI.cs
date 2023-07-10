@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Movement
+namespace _Scripts.Movement
 {
     public interface IMovementAI
     {

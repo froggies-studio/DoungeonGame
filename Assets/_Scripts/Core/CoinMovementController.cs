@@ -1,4 +1,3 @@
-using Movement;
 using UnityEngine;
 
 namespace _Scripts.Core
