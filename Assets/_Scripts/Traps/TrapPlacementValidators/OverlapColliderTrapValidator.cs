@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace _Scripts.Core
+namespace _Scripts.Traps.TrapPlacementValidators
 {
     public class OverlapColliderTrapValidator : MonoBehaviour, ITrapPlacementValidator
     {

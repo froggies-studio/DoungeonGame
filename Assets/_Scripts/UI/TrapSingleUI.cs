@@ -1,13 +1,14 @@
-﻿using System;
-using _Scripts.Core;
+﻿#region
+
+using System;
 using _Scripts.Managers;
 using _Scripts.ScriptableObjects;
 using _Scripts.Traps;
-using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
+#endregion
 
 namespace _Scripts.UI
 {
@@ -18,14 +19,13 @@ namespace _Scripts.UI
         [SerializeField] private TextMeshProUGUI counterText;
         [SerializeField] private Button button;
 
-        public static event Action<TrapType> OnTrapPressed;
-
         private TrapType _trapType;
 
         private void Start()
         {
             button.onClick.AddListener(() =>
             {
+                TrapsManager.Instance.ToggleTrap(_trapType);
                 OnTrapPressed?.Invoke(_trapType);
                 InvokeOnUIPressed();
             });
@@ -36,9 +36,10 @@ namespace _Scripts.UI
 
         private void OnDestroy()
         {
-            // TrapsManager.Instance.OnTrapCountChanged -= TrapManagerOnTrapCountChanged;
             TrapRecharger.OnRechargeChanged -= TrapRechargerOnRechargeChanged;
         }
+
+        public static event Action<TrapType> OnTrapPressed;
 
         private void TrapRechargerOnRechargeChanged(TrapType trapType, float fillAmount)
         {
@@ -55,22 +56,6 @@ namespace _Scripts.UI
                 counterText.text = TrapsManager.Instance.GetTrapCount(trapType).ToString();
             }
         }
-
-        // private void TrapSystemOnTrapReloadChanged(TrapType trapType, float newCount)
-        // {
-        //     if (_trapType == trapType)
-        //     {
-        //         reloadIcon.fillAmount = newCount;
-        //     }
-        // }
-
-        // private void TrapSystemOnTrapCountChanged(TrapType trapType, int newCount)
-        // {
-        //     if (_trapType == trapType)
-        //     {
-        //         counterText.text = newCount.ToString();
-        //     }
-        // }
 
         public void SetTrapSO(TrapSO trapSO, int count)
         {

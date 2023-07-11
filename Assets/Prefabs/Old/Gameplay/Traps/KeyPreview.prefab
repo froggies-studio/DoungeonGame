@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPlaceVisuals: {fileID: 5980167506756290874}
   canNotPlaceVisuals: {fileID: 4497839734725455784}
+  <TrapType>k__BackingField: 2
 --- !u!114 &5645965767728930726
 MonoBehaviour:
   m_ObjectHideFlags: 0

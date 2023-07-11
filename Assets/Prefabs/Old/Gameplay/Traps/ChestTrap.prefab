@@ -145,8 +145,9 @@ GameObject:
   - component: {fileID: 8145432612380649453}
   - component: {fileID: 3589094869142058113}
   - component: {fileID: 2072291308292183100}
-  - component: {fileID: 3786399344369469716}
   - component: {fileID: 534143390869477536}
+  - component: {fileID: 5549921858863454530}
+  - component: {fileID: 8571984106781193808}
   m_Layer: 6
   m_Name: ChestTrap
   m_TagString: Untagged
@@ -246,20 +247,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3786399344369469716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8248717791442500080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 007ee0403e214cd6b799e7110cc472d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1000
-  coinDamageEffectPrefab: {fileID: 0}
 --- !u!114 &534143390869477536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +259,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6dcf02e9fe4fa5bd9b9c35dd0a95df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinReceiver: {fileID: 3786399344369469716}
+  coinDamageReceiver: {fileID: 5549921858863454530}
+--- !u!114 &5549921858863454530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248717791442500080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e09f6c6e8964ab996a65430dd0bdc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsHolderGameObject: {fileID: 8248717791442500080}
+--- !u!114 &8571984106781193808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248717791442500080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0bebcbdc9f0485abf1e4ed84685530c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Stats>k__BackingField:
+    statsDictionary:
+      _serializedList:
+      - Key: 1
+        Value: 10
 --- !u!1 &8914904732809088269
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc05129749e64463b487c50c2af49f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinReceiver: {fileID: 3786399344369469716}
+  damageReceiver: {fileID: 5549921858863454530}
 --- !u!1001 &2245381755124671888
 PrefabInstance:
   m_ObjectHideFlags: 0

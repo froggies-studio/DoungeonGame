@@ -1,6 +1,7 @@
 #region
 
 using System;
+using _Scripts.Units;
 using UnityEngine;
 
 #endregion
@@ -13,8 +14,7 @@ namespace _Scripts.Core
         private const string WALK_HORIZONTAL_STATE_NAME = "WalkHorizontal";
         private const string WALK_VERTICAL_STATE_NAME = "WalkVertical";
 
-        private static readonly int State = Animator.StringToHash("AnimationState");
-        [SerializeField] private Rigidbody2D rigidbody2D;
+        [SerializeField] private Player player;
         [SerializeField] private Animator animator;
         [SerializeField] private GameObject spriteHandle;
         [SerializeField] private GameObject lightHandle;
@@ -25,9 +25,10 @@ namespace _Scripts.Core
 
         private AnimationStates _currentAnimationState = AnimationStates.Idle;
 
+        private Vector3 _previousPlayerPosition;
         private void Update()
         {
-            var velocity = rigidbody2D.velocity;
+            var velocity = (player.transform.position - _previousPlayerPosition)/Time.deltaTime;
             var absVelocity = new Vector2(Math.Abs(velocity.x), Math.Abs(velocity.y));
             var maxVelocity = Mathf.Max(absVelocity.x, absVelocity.y);
             var animationState = AnimationStates.Idle;
@@ -42,6 +43,8 @@ namespace _Scripts.Core
             {
                 SwitchAnimationState(animationState);
             }
+
+            _previousPlayerPosition = player.transform.position;
         }
 
         private void PerformAnimation(AnimationStates animationState, Vector2 velocity)
@@ -78,7 +81,7 @@ namespace _Scripts.Core
         private void SwitchAnimationState(AnimationStates animationState)
         {
             _currentAnimationState = animationState;
-            // animator.SetInteger(State, (int) animationState);
+            
             switch (_currentAnimationState)
             {
                 case AnimationStates.Idle:

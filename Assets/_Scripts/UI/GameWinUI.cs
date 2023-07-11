@@ -8,7 +8,6 @@ namespace _Scripts.UI
     {
         [SerializeField] private Button mainMenuButton;
         [SerializeField] private Button lvlOne;
-        [SerializeField] private GameObject handle;
 
         private void Start()
         {
@@ -46,12 +45,12 @@ namespace _Scripts.UI
 
         private void Hide()
         {
-            handle.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         private void Show()
         {
-            handle.SetActive(true);
+            gameObject.SetActive(true);
         }
 
         private void OnDestroy()

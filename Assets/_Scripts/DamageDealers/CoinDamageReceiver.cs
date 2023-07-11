@@ -1,12 +1,13 @@
 ﻿#region
 
 using System;
+using _Scripts.DamageReceivers;
 using _Scripts.Stats;
 using UnityEngine;
 
 #endregion
 
-namespace _Scripts.DamageReceivers
+namespace _Scripts.DamageDealers
 {
     public class CoinDamageReceiver : MonoBehaviour, IDamageReceiver
     {
@@ -45,11 +46,13 @@ namespace _Scripts.DamageReceivers
 
         public event Action<float> OnHealthChanged;
         public event Action OnDead;
+        public event Action<IDamageDealer, Vector3> OnDamageReceived;
 
         public void ReceiveDamage(IDamageDealer damageDealer, float damageAmount)
         {
             CurrentHealth -= damageAmount;
             OnHealthChanged?.Invoke(CurrentHealth);
+            OnDamageReceived?.Invoke(damageDealer, transform.position);
 
             if (CurrentHealth <= 0f)
             {

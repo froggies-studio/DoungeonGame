@@ -14,13 +14,14 @@ namespace _Scripts.Managers
         public TrapType ActiveTrap { get; private set; }
 
         private Dictionary<TrapType, int> _trapsCounts;
-        
+
         public event Action<TrapType> OnTrapCountChanged;
+        public event Action OnActiveTrapChanged; 
 
         protected override void Awake()
         {
             base.Awake();
-            
+
             _trapsCounts =
                 ResourceSystem.Instance.TrapsManagerSO.baseTrapsCounts
                     .ToDictionary(t => t.Key, t => t.Value);
@@ -31,31 +32,57 @@ namespace _Scripts.Managers
 #if DEBUG
             if (Input.GetKeyDown(KeyCode.T))
             {
-                SpawnTrap(TrapType.Chest, Vector3.back);
+                if (IsTrapSelected)
+                {
+                    SpawnTrap(ActiveTrap, Vector3.back);
+                }
             }
 #endif
+        }
+
+        public void ToggleTrap(TrapType trapType)
+        {
+            if (IsTrapSelected)
+            {
+                if (trapType == ActiveTrap)
+                {
+                    IsTrapSelected = false;
+                    ActiveTrap = TrapType.None;
+                }
+                else
+                {
+                    ActiveTrap = trapType;
+                }
+            }
+            else
+            {
+                IsTrapSelected = true;
+                ActiveTrap = trapType;
+            }
+            
+            OnActiveTrapChanged?.Invoke();
         }
 
         public int GetTrapCount(TrapType trapType)
         {
             return _trapsCounts[trapType];
         }
-        
+
         public int GetTrapMaxCount(TrapType trapType)
         {
             return ResourceSystem.Instance.TrapsManagerSO.maxTrapsCounts[trapType];
         }
-        
+
         public bool TryIncreaseTrapCount(TrapType trapType, int count)
         {
             int maxTrapCount = GetTrapMaxCount(trapType);
             int trapCount = GetTrapCount(trapType);
-            
+
             if (trapCount >= maxTrapCount)
             {
                 return false;
             }
-            
+
             _trapsCounts[trapType] = Mathf.Min(trapCount + count, maxTrapCount);
             OnTrapCountChanged?.Invoke(trapType);
 
@@ -66,7 +93,7 @@ namespace _Scripts.Managers
         {
             var trapSO = ResourceSystem.Instance.GetTrapSO(type);
 
-            // var spawned = Instantiate(trapSO.prefab1, position, Quaternion.identity, transform);
+            var spawned = Instantiate(trapSO.Prefab, position, Quaternion.identity, transform);
 
             _trapsCounts[type]--;
             OnTrapCountChanged?.Invoke(type);
@@ -82,7 +109,7 @@ namespace _Scripts.Managers
             SpawnTrap(type, position);
             return true;
         }
-        
+
         public void SelectTrap(TrapType trapType)
         {
             IsTrapSelected = true;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8337897023877670798}
   - component: {fileID: 538175161648646598}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DwarfLegL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 20bb34adaa9691c45a35a13150739acc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,6 +84,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &125190741942225056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5801992587334854365}
+  - component: {fileID: 6574306807757740073}
+  m_Layer: 11
+  m_Name: Visuals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5801992587334854365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125190741942225056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8625509603519473160}
+  m_Father: {fileID: 5538004050537272516}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6574306807757740073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125190741942225056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0920341985ff4b61a0063b0948faf08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 597938527605824963}
+  animator: {fileID: 4891555738471868235}
+  spriteHandle: {fileID: 6798511819686287327}
+  lightHandle: {fileID: 6168304945427177711}
+  spriteRenderer: {fileID: 8901997346836869958}
+  frontView: {fileID: 21300000, guid: cbd202dbbc9c02b4bb29a05368a3ed71, type: 3}
+  backView: {fileID: 21300000, guid: f4cf961aa0dbec64ba600e365b9aabf7, type: 3}
 --- !u!1 &3849410448093836049
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8868809271379373932}
   - component: {fileID: 8219366973414063134}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DwarfLegR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +208,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 20bb34adaa9691c45a35a13150739acc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -179,10 +231,10 @@ GameObject:
   - component: {fileID: 5538004050537272516}
   - component: {fileID: 5501230837988045613}
   - component: {fileID: 4063150227891929528}
-  - component: {fileID: 8195944681610527656}
   - component: {fileID: 4668134439545335539}
-  - component: {fileID: 545042176405822888}
-  m_Layer: 0
+  - component: {fileID: 597938527605824963}
+  - component: {fileID: 3746046672526235630}
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8625509603519473160}
+  - {fileID: 5801992587334854365}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -217,9 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3b45cca200419d95be84959c7b37ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4668134439545335539}
-  speed: 3
-  accuracy: 0.08
+  statsHolderGameObject: {fileID: 5557681920757399016}
 --- !u!58 &4063150227891929528
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -255,20 +305,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &8195944681610527656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5557681920757399016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 007ee0403e214cd6b799e7110cc472d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  coinDamageEffectPrefab: {fileID: 3776757440141379083, guid: bc070a2ca3248ba4db84ecc5e5b6507a, type: 3}
 --- !u!50 &4668134439545335539
 Rigidbody2D:
   serializedVersion: 4
@@ -296,7 +332,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &545042176405822888
+--- !u!114 &597938527605824963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,16 +341,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 5557681920757399016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0920341985ff4b61a0063b0948faf08d, type: 3}
+  m_Script: {fileID: 11500000, guid: 19c3a28eca6c4d5b8c95bc3adbc5acf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody2D: {fileID: 4668134439545335539}
-  animator: {fileID: 4891555738471868235}
-  spriteHandle: {fileID: 6798511819686287327}
-  lightHandle: {fileID: 6168304945427177711}
-  spriteRenderer: {fileID: 8901997346836869958}
-  frontView: {fileID: 21300000, guid: cbd202dbbc9c02b4bb29a05368a3ed71, type: 3}
-  backView: {fileID: 21300000, guid: f4cf961aa0dbec64ba600e365b9aabf7, type: 3}
+  coinDamageReceiver: {fileID: 3746046672526235630}
+  playerStats:
+    statsDictionary:
+      _serializedList:
+      - Key: 0
+        Value: 1
+      - Key: 1
+        Value: 20
+--- !u!114 &3746046672526235630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557681920757399016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e09f6c6e8964ab996a65430dd0bdc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsHolderGameObject: {fileID: 5557681920757399016}
 --- !u!1 &6168304945427177711
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 962904072860457254}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LightRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3609278783505661567}
   - component: {fileID: 4698378883800887095}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +446,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.9528302, g: 0.754019, b: 0.31161734, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 2f296b7e00000000b5517811
@@ -439,7 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8625509603519473160}
   - component: {fileID: 4891555738471868235}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DwarfSpriteRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,13 +504,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6798511819686287327}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.313, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2195296809016698795}
   - {fileID: 962904072860457254}
-  m_Father: {fileID: 5538004050537272516}
+  - {fileID: 2195296809016698795}
+  m_Father: {fileID: 5801992587334854365}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4891555738471868235
@@ -494,7 +544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2195296809016698795}
   - component: {fileID: 8901997346836869958}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DwarfSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +558,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7404507539282640214}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -558,7 +608,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cbd202dbbc9c02b4bb29a05368a3ed71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

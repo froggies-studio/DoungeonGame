@@ -2,7 +2,7 @@
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
-namespace _Scripts.Managers
+namespace _Scripts.ScriptableObjects
 {
     [CreateAssetMenu(menuName = "Create TrapsManagerSO", fileName = "TrapsManagerSO", order = 0)]
     public class TrapsManagerSO : ScriptableObject

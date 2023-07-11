@@ -323,8 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 183
-  reverse: 0
+    m_Bits: 64
 --- !u!114 &5893613595912151639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,3 +338,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPlaceVisuals: {fileID: 2907136909746033527}
   canNotPlaceVisuals: {fileID: 6613370854380825371}
+  <TrapType>k__BackingField: 1

@@ -3,6 +3,7 @@
 using System;
 using _Scripts.Core;
 using _Scripts.Managers;
+using _Scripts.Traps;
 using _Scripts.Units;
 using UnityEngine;
 

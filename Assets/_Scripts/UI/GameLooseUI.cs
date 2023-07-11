@@ -48,12 +48,12 @@ namespace _Scripts.UI
 
         private void Hide()
         {
-            handle.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         private void Show()
         {
-            handle.SetActive(true);
+            gameObject.SetActive(true);
         }
     }
 }

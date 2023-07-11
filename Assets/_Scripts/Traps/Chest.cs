@@ -1,9 +1,8 @@
 ﻿using System;
-using _Scripts.Core;
-using _Scripts.DamageReceivers;
+using _Scripts.DamageDealers;
 using UnityEngine;
 
-namespace _Scripts.UI
+namespace _Scripts.Traps
 {
     public class Chest : MonoBehaviour
     {
@@ -14,6 +13,13 @@ namespace _Scripts.UI
         private void Start()
         {
             coinDamageReceiver.OnHealthChanged += CoinDamageReceiverOnHealthChanged;
+            coinDamageReceiver.OnDead += CoinDamageReceiverOnDead;
+        }
+
+        private void CoinDamageReceiverOnDead()
+        {
+            coinDamageReceiver.OnHealthChanged -= CoinDamageReceiverOnHealthChanged;
+            coinDamageReceiver.enabled = false;
         }
 
         private void CoinDamageReceiverOnHealthChanged(float obj)

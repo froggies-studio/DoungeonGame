@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4608382343731194919}
   - component: {fileID: 8930377841116029624}
   m_Layer: 5
-  m_Name: TrapSelectorUIComponent
+  m_Name: TrapSelectorUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a068e592b84e8587171e7b19bcf2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapSystem: {fileID: 0}
   trapUITemplate: {fileID: 5360583437930315494, guid: 0310b87b34d67424cb5a32ac37252f2e, type: 3}
 --- !u!114 &8930377841116029624
 MonoBehaviour:
