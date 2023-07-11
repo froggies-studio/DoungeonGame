@@ -2,6 +2,8 @@
 
 using System;
 using _Scripts.Helpers;
+using _Scripts.Managers.WayPointManagers;
+using _Scripts.Units;
 using UnityEngine;
 
 #endregion
@@ -51,7 +53,10 @@ namespace _Scripts.Managers
 
         private void HandleStarting()
         {
-            //Initial setup
+            Player.Instance.OnDead += () => ChangeState(GameState.PlayerLoose);
+            WayPointManager.Instance.OnLastPointReached += () => ChangeState(GameState.PlayerWin);
+            
+            ChangeState(GameState.Playing);
         }
 
         private void HandlePlaying()

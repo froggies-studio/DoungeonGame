@@ -437,8 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbb4792316b4cffadb03f21ae9cfa4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointSystem: {fileID: 1943982975}
-  player: {fileID: 1603909964}
 --- !u!114 &328903978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,11 +1336,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3741767637691058144, guid: 91d172c4ecc2acf428d7f1e4262d67f8, type: 3}
   m_PrefabInstance: {fileID: 675152225}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &688525040 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7988300661777016600, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
-  m_PrefabInstance: {fileID: 1308499563103774651}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &717885681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,6 +1973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeForce: 0.7
   impulseSource: {fileID: 1073539413}
+  targetDamageReceiver: {fileID: 0}
 --- !u!114 &1131258745 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3738936759778857497, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
@@ -5055,17 +5049,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5538004050537272516, guid: 4481fe0a2d9e8e543adbd529ef38ccc4, type: 3}
   m_PrefabInstance: {fileID: 3766203279850759570}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1603909969 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8195944681610527656, guid: 4481fe0a2d9e8e543adbd529ef38ccc4, type: 3}
-  m_PrefabInstance: {fileID: 3766203279850759570}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603909964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 007ee0403e214cd6b799e7110cc472d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1603909974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5078,7 +5061,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c3a28eca6c4d5b8c95bc3adbc5acf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinReceiver: {fileID: 1603909969}
+  coinDamageReceiver: {fileID: 0}
+  playerStats:
+    statsDictionary:
+      _serializedList: []
 --- !u!1 &1640897074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5190,17 +5176,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1816851695627488282, guid: b8647e6020f91b745903f5117d839d78, type: 3}
   m_PrefabInstance: {fileID: 2811041535247740741}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1673907119 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8177035619240589923, guid: b8647e6020f91b745903f5117d839d78, type: 3}
-  m_PrefabInstance: {fileID: 2811041535247740741}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a04183a3ee462393d154433334d04e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1699699489
 GameObject:
   m_ObjectHideFlags: 0
@@ -6205,7 +6180,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 717885682}
-  m_Father: {fileID: 688525040}
+  m_Father: {fileID: 352045787}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6637,7 +6612,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7988300661777016600, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 2944643576370925788, guid: 6114539c0f7060e4796b4a6ca292c1b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2084906036}
     m_AddedComponents: []
@@ -6976,30 +6951,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1672031111192235119, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1672031111192235119, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1672031111192235119, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1672031111192235119, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608382343731194919, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
-      propertyPath: trapSystem
-      value: 
-      objectReference: {fileID: 731139951}
-    - target: {fileID: 4608382343731194919, guid: f554c2b093750134ea6cbeb2810f1144, type: 3}
-      propertyPath: cursorController
-      value: 
-      objectReference: {fileID: 1673907119}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7201,7 +7152,7 @@ PrefabInstance:
     - target: {fileID: 7508845700454311936, guid: 3571c9e67a7aa184497b1bfe9bd3d719, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1603909969}
+      objectReference: {fileID: 0}
     - target: {fileID: 7946474986158266684, guid: 3571c9e67a7aa184497b1bfe9bd3d719, type: 3}
       propertyPath: m_Name
       value: PlayerHealthUIComponent

@@ -1,27 +1,13 @@
-﻿using UnityEngine;
+﻿using _Scripts.Helpers;
+using UnityEngine;
 
 namespace _Scripts.UI
 {
-    public class SceneLoader : MonoBehaviour
+    public class SceneLoader : Singleton<SceneLoader>
     {
-        public static SceneLoader Instance { get; private set; }
-
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-
         public void LoadGameScene()
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
         }
 
         public void LoadMainMenuScene()
