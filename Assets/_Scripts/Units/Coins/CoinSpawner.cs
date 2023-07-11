@@ -1,11 +1,8 @@
 #region
 
-using System;
 using _Scripts.Core;
 using _Scripts.Managers;
-using Core;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 #endregion
 
