@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Scripts.Core
+namespace _Scripts.Effects
 {
     public class AutoDestroy : MonoBehaviour
     {

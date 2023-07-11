@@ -1,4 +1,4 @@
-﻿namespace _Scripts.Core
+﻿namespace _Scripts.Traps
 {
     public enum TrapType{
         None,

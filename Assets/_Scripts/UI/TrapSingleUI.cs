@@ -1,6 +1,9 @@
 ﻿using System;
 using _Scripts.Core;
+using _Scripts.Managers;
 using _Scripts.ScriptableObjects;
+using _Scripts.Traps;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,30 +29,59 @@ namespace _Scripts.UI
                 OnTrapPressed?.Invoke(_trapType);
                 InvokeOnUIPressed();
             });
-            TrapSystem.Instance.OnTrapCountChanged += TrapSystemOnTrapCountChanged;
-            TrapSystem.Instance.OnTrapReloadChanged += TrapSystemOnTrapReloadChanged;
+
+            TrapsManager.Instance.OnTrapCountChanged += TrapManagerOnTrapCountChanged;
+            TrapRecharger.OnRechargeChanged += TrapRechargerOnRechargeChanged;
         }
-        private void TrapSystemOnTrapReloadChanged(TrapType trapType, float newCount)
+
+        private void OnDestroy()
         {
-            if (_trapType == trapType)
+            // TrapsManager.Instance.OnTrapCountChanged -= TrapManagerOnTrapCountChanged;
+            TrapRecharger.OnRechargeChanged -= TrapRechargerOnRechargeChanged;
+        }
+
+        private void TrapRechargerOnRechargeChanged(TrapType trapType, float fillAmount)
+        {
+            if (trapType == _trapType)
             {
-                reloadIcon.fillAmount = newCount;
+                ChangeFillAmount(fillAmount);
             }
         }
 
-        private void TrapSystemOnTrapCountChanged(TrapType trapType, int newCount)
+        private void TrapManagerOnTrapCountChanged(TrapType trapType)
         {
             if (_trapType == trapType)
             {
-                counterText.text = newCount.ToString();
+                counterText.text = TrapsManager.Instance.GetTrapCount(trapType).ToString();
             }
         }
 
-        public void SetTrapInfoSO(TrapSO trapSO, int count)
+        // private void TrapSystemOnTrapReloadChanged(TrapType trapType, float newCount)
+        // {
+        //     if (_trapType == trapType)
+        //     {
+        //         reloadIcon.fillAmount = newCount;
+        //     }
+        // }
+
+        // private void TrapSystemOnTrapCountChanged(TrapType trapType, int newCount)
+        // {
+        //     if (_trapType == trapType)
+        //     {
+        //         counterText.text = newCount.ToString();
+        //     }
+        // }
+
+        public void SetTrapSO(TrapSO trapSO, int count)
         {
             trapIcon.sprite = trapSO.Icon;
             counterText.text = count.ToString();
             _trapType = trapSO.TrapType;
+        }
+
+        private void ChangeFillAmount(float fillAmount)
+        {
+            reloadIcon.fillAmount = fillAmount;
         }
     }
 }

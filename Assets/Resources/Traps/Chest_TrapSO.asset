@@ -18,3 +18,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ce76e796585a57b42aaec171653e5512, type: 3}
   reloadTime: 30
   maxCapacity: 3
+  prefab1: {fileID: 0}

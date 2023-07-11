@@ -24,10 +24,10 @@ namespace _Scripts.Effects
         private void Start()
         {
             // Player.Instance.CoinReceiver.OnDamageReceived += CoinReceiverOnDamageReceived;
-            targetDamageReceiver.OnDamageReceived += CoinReceiverOnDamageReceived;
+            targetDamageReceiver.OnHealthChanged += CoinReceiverOnHealthChanged;
         }
 
-        private void CoinReceiverOnDamageReceived(float obj)
+        private void CoinReceiverOnHealthChanged(float obj)
         {
             CameraShakeOnce();
         }

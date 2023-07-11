@@ -4,7 +4,10 @@ namespace _Scripts.DamageReceivers
 {
     public interface IDamageReceiver
     {
-        event Action<float> OnDamageReceived;
-        void ReceiveDamage(float damageAmount);
+        float MaxHealth { get; }
+        float CurrentHealth { get; }
+        event Action OnDead;
+        event Action<float> OnHealthChanged;
+        void ReceiveDamage(IDamageDealer damageDealer, float damageAmount);
     }
 }

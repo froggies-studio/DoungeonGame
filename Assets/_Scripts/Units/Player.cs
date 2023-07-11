@@ -19,31 +19,16 @@ namespace _Scripts.Units
         private void Awake()
         {
             Instance = this;
-            ResetCurrentHp();
-        }
-
-        private void ResetCurrentHp()
-        {
-            float maxHealth = playerStats.statsDictionary[StatType.MaxHp];
-            if (!playerStats.statsDictionary.TryAdd(StatType.CurrentHp, maxHealth))
-            {
-                playerStats.statsDictionary[StatType.CurrentHp] = maxHealth;
-            }
         }
 
         private void Start()
         {
-            coinDamageReceiver.OnDamageReceived += CoinDamageReceiverOnDamageReceived;
+            coinDamageReceiver.OnDead += CoinDamageReceiverOnDead;
         }
 
-        private void CoinDamageReceiverOnDamageReceived(float damageAmount)
+        private void CoinDamageReceiverOnDead()
         {
-            playerStats.statsDictionary[StatType.CurrentHp] -= damageAmount;
-
-            if (playerStats.statsDictionary[StatType.CurrentHp] <= 0)
-            {
-                OnDead?.Invoke();
-            }
+            OnDead?.Invoke();
         }
 
         private void Update()
@@ -51,16 +36,10 @@ namespace _Scripts.Units
 #if DEBUG
             if (Input.GetButtonDown("Fire1"))
             {
-                coinDamageReceiver.ReceiveDamage(1f);
+                // coinDamageReceiver.ReceiveDamage();
             }
 
             if (Input.GetKeyDown(KeyCode.K))
-            {
-                playerStats.statsDictionary[StatType.Speed] -= 1f;
-                OnStatsChanged?.Invoke();
-            }
-
-            if (GUI.changed)
             {
                 OnStatsChanged?.Invoke();
             }

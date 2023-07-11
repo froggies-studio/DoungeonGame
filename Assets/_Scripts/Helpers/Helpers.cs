@@ -36,5 +36,17 @@ namespace _Scripts.Helpers
                 }
             }
         }
+        
+        private static readonly Dictionary<float, WaitForSeconds> WaitForSecondsDictionary = new Dictionary<float, WaitForSeconds>();
+        public static WaitForSeconds GetCachedWaitForSeconds(float seconds)
+        {
+            if (WaitForSecondsDictionary.TryGetValue(seconds, out var waitForSeconds))
+            {
+                return waitForSeconds;
+            }
+            
+            WaitForSecondsDictionary.Add(seconds, new WaitForSeconds(seconds));
+            return WaitForSecondsDictionary[seconds];
+        }
     }
 }

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using _Scripts.Core;
+using UnityEngine;
 
-namespace _Scripts.Units
+namespace _Scripts.Traps
 {
     public abstract class BaseTrap : MonoBehaviour
     {
-        
+        public abstract TrapType TrapType { get; }
     }
 }

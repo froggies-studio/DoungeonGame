@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Scripts.ScriptableObjects;
+using _Scripts.Traps;
 using UnityEngine;
 
 #endregion
@@ -96,9 +97,9 @@ namespace _Scripts.Core
             bool trapUsed = false;
             switch (trapType)
             {
-                case TrapType.None:
-                    Debug.LogError($"Can't use {TrapType.None}");
-                    break;
+                // case TrapType.None:
+                //     Debug.LogError($"Can't use {TrapType.None}");
+                //     break;
                 case TrapType.Chest:
                     var trap = _trapDictionary[trapType];
                     SpawnTrap(position, trap);

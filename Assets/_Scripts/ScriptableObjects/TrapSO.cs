@@ -1,4 +1,5 @@
 using _Scripts.Core;
+using _Scripts.Traps;
 using _Scripts.Units;
 using UnityEngine;
 
